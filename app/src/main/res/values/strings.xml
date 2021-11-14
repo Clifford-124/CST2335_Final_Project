@@ -10,4 +10,13 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+
+    <string name="distance">Distance (KM/MI)</string>
+    <string name="distance_km">km</string>
+    <string name="distance_ml">ml</string>
+    <string name="distance_in_km">Distance in km or mi</string>
+    <string name="vehicle">Vehicle Company</string>
+    <string name="vehicle_hint">Select Vehicle Company</string>
+    <string name="search_car_model">Search Models</string>
+
 </resources>
