@@ -85,8 +85,8 @@ public class PexelsActivity extends AppCompatActivity {
 
     public void showHelpDialog() {
         new AlertDialog.Builder(PexelsActivity.this)
-                .setTitle("Pexels Interface")
-                .setMessage("This interface will serach for pictures in pexels")
+                .setTitle("Pexel Interface")
+                .setMessage("This interface will search for pictures in Pexels")
                 .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         return;
