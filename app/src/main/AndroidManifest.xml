@@ -11,20 +11,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CST2335_Final_Project">
         <activity
-            android:name=".CarbonDetectActivity"
+            android:name=".PexelsActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".CarbonDetectActivity"
+            android:exported="true">
         </activity>
         <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/Theme.CST2335_Final_Project.NoActionBar">
-        </activity>
+            android:theme="@style/Theme.CST2335_Final_Project.NoActionBar"></activity>
     </application>
-
 </manifest>

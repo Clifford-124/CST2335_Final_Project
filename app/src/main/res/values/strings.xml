@@ -19,4 +19,8 @@
     <string name="vehicle_hint">Select Vehicle Company</string>
     <string name="search_car_model">Search Models</string>
 
+    <string name="pexels_search_item">Type here to search pictures</string>
+    <string name="search_pexels_pictures">Search Pictures</string>
+
+    <string name="help">Help</string>
 </resources>
