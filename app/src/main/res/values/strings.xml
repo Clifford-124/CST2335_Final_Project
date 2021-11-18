@@ -23,4 +23,5 @@
     <string name="search_pexels_pictures">Search Pictures</string>
 
     <string name="help">Help</string>
+    <string name="hintdate">Date Format: YYYY-MM-DD</string>
 </resources>
