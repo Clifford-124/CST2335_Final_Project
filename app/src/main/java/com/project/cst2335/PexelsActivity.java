@@ -47,7 +47,7 @@ public class PexelsActivity extends AppCompatActivity {
 
         //when the search button is clicked
         search_button.setOnClickListener((vw)->{
-            System.out.println("inside click button ");
+
             validateInput();
         });
     }
@@ -65,7 +65,7 @@ public class PexelsActivity extends AppCompatActivity {
             searchItem.requestFocus(); //select the search item for user to enter input
 
         }else {
-            System.out.println("=================== inside else ");
+
             //AlertDialog
             AlertDialog.Builder builder = new AlertDialog.Builder(PexelsActivity.this);
             builder.setMessage("Do you want to search for "+userInput +" using internet connection ?");
