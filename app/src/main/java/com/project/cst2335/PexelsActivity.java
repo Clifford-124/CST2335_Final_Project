@@ -5,95 +5,95 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.material.snackbar.Snackbar;
 
 public class PexelsActivity extends AppCompatActivity {
 
-    EditText searchItem;
-    AppCompatButton searchPictures;
+    private EditText searchItem;
 
-    protected SharedPreferences sharedPref;
-    protected SharedPreferences.Editor editor;
-    protected String preference = "finalProject";
-
+    private AlertDialog alert;
+    private Button search_button;
+    private SharedPreferences prefs;
+    private String search_word;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pexels);
 
-        getSupportActionBar().setTitle("Pexels");
-        getSupportActionBar().setSubtitle("Seema");
+        searchItem =  (EditText) findViewById(R.id.searchItem);
+        search_button = (Button)  findViewById(R.id.search_button);
 
-        searchItem = (EditText) findViewById(R.id.searchItem);
-        searchPictures = (AppCompatButton) findViewById(R.id.searchPictures);
+        //Store search word typed by user in SharedPreferences
+        prefs = getSharedPreferences("myData", Context.MODE_PRIVATE);
 
-        retrieveData();
+        //check if file associated with name "value" is there, if not set to empty string
+        //getXXX(key, default value)
+        search_word = prefs.getString("value","test");
+        searchItem.setText(search_word);
 
-        searchPictures.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                validateInputs();
-            }
+        //when the search button is clicked
+        search_button.setOnClickListener((vw)->{
+
+            validateInput();
         });
     }
-    public void retrieveData() {
-        SharedPreferences prefs = getSharedPreferences (preference,MODE_PRIVATE);
-        String searchValue = prefs.getString("pexelsSearch", "-");
-        if (!searchValue.equals("-")) searchItem.setText(searchValue);
-    }
 
-    public void validateInputs() {
-        String searchValue = searchItem.getText().toString();
-        if (searchValue.equals("")) {
-            Toast.makeText(PexelsActivity.this,"Please enter something to search",Toast.LENGTH_LONG).show();
-            searchItem.requestFocus();
+
+    /**
+     * This function checks if the search box is empty,
+     * if empty we pop up a Toast as a message to the user
+     */
+    public void validateInput() {
+
+        String userInput = searchItem.getText().toString();
+        if (userInput.equals("")) {
+            Toast.makeText(PexelsActivity.this, "Please enter something to search", Toast.LENGTH_LONG).show();
+            searchItem.requestFocus(); //select the search item for user to enter input
+
+        }else {
+
+            //AlertDialog
+            AlertDialog.Builder builder = new AlertDialog.Builder(PexelsActivity.this);
+            builder.setMessage("Do you want to search for "+userInput +" using internet connection ?");
+            builder.setTitle("Question: ");
+
+            builder.setNegativeButton("No", (dialog, cl)->{
+                //if  user clicks no, do nothing
+
+            });
+
+            builder.setPositiveButton("Yes", (dialog, cl)->{
+                //get input text
+                String user_input_string = searchItem.getText().toString();
+
+                //save data
+                SharedPreferences.Editor editor = prefs.edit();
+                editor.putString("value",user_input_string);//store key and value
+                editor.apply();
+
+                TextView messageText = (TextView) findViewById(R.id.message);
+                Snackbar.make(messageText, "Sending request over internet to get images...", Snackbar.LENGTH_LONG).show();
+            });
+
+            //make the Alert window appear
+            builder.create().show();
+
         }
-        else {
-            saveData(searchValue);
-            onLoadModels();
-        }
     }
 
-    public void saveData(String searchValue) {
-        editor = getSharedPreferences(preference, MODE_PRIVATE).edit();
-        editor.putString("pexelsSearch", searchValue);
-        editor.apply();
-    }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-
-        if (item.getItemId() == R.id.help) {
-            showHelpDialog();
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    public void showHelpDialog() {
-        new AlertDialog.Builder(PexelsActivity.this)
-                .setTitle("Pexel Interface")
-                .setMessage("This interface will search for pictures in Pexels")
-                .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        return;
-                    }
-                }).show();
-    }
-    public void onLoadModels() {
-
-    }
 }
