@@ -15,7 +15,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.material.snackbar.Snackbar;
 
 public class PexelsActivity extends AppCompatActivity {
 
@@ -82,7 +85,8 @@ public class PexelsActivity extends AppCompatActivity {
                 editor.putString("value",user_input_string);//store key and value
                 editor.apply();
 
-                Toast.makeText(PexelsActivity.this, "inside yes ", Toast.LENGTH_LONG).show();
+                TextView messageText = (TextView) findViewById(R.id.message);
+                Snackbar.make(messageText, "Sending request over internet to get images...", Snackbar.LENGTH_LONG).show();
             });
 
             //make the Alert window appear
