@@ -19,4 +19,7 @@
 
     <string name="help">Help</string>
     <string name="hintdate">Date Format: YYYY-MM-DD</string>
+
+    <string name="carbon_api_key">Y0ZMTMhF0Wdxnawy2m5Q</string>
+    <string name="vehicle_make_url">https://www.carboninterface.com/api/v1/vehicle_makes</string>
 </resources>

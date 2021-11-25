@@ -3,73 +3,88 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:id="@+id/rootLayout"
     android:layout_height="match_parent"
     tools:context=".CarbonDetectActivity">
 
-        <EditText
-            android:id="@+id/travelDistance"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:autofillHints="0"
-            android:hint="@string/distance_in_km"
-            android:inputType="numberDecimal"
-            android:maxLines="1"
-            android:paddingRight="20dp"
-            android:paddingLeft="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <EditText
+        android:id="@+id/travelDistance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:hint="@string/distance_in_km"
+        android:autofillHints="20"
+        android:inputType="numberDecimal"
+        android:maxLines="1"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <RadioGroup
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingRight="20dp"
-            android:layout_margin="20dp"
-            android:paddingLeft="20dp"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/travelDistance"
-            android:id="@+id/distance_measure">
+    <RadioGroup
+        android:id="@+id/distance_measure"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/travelDistance">
 
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text="@string/distance_km"
-                android:textSize="16sp"/>
-
-            <RadioButton
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:text="@string/distance_ml"
-                android:textSize="16sp"/>
-
-        </RadioGroup>
-
-        <AutoCompleteTextView
-            android:id="@+id/vehicleCompanies"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/vehicle_hint"
-            android:layout_margin="20dp"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/distance_measure"
-            />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/searchModels"
+        <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:layout_marginStart="136dp"
-            android:layout_marginTop="72dp"
-            android:text="@string/search_car_model"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/vehicleCompanies" />
+            android:layout_weight="1"
+            android:text="@string/distance_km"
+            android:textSize="16sp" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/distance_ml"
+            android:textSize="16sp" />
+
+    </RadioGroup>
+
+    <AutoCompleteTextView
+        android:id="@+id/vehicleCompanies"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:hint="@string/vehicle_hint"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/distance_measure" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/searchModels"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:layout_marginStart="136dp"
+        android:layout_marginTop="72dp"
+        android:text="@string/search_car_model"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vehicleCompanies" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/modelList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="20dp"
+        android:layout_marginBottom="50dp"
+        app:layout_constraintStart_toEndOf="@id/searchModels"
+        app:layout_constraintTop_toBottomOf="@+id/searchModels"
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
