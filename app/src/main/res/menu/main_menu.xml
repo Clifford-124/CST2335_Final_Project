@@ -12,4 +12,10 @@
         android:orderInCategory="100"
         android:title="@string/project_pexels"
         app:showAsAction="always" />
+    <item
+        android:id="@+id/carbonInterfaceMenu"
+        android:icon="@drawable/ic_menu_gallery"
+        android:orderInCategory="100"
+        android:title="@string/project_carbondixide"
+        app:showAsAction="always" />
 </menu>
