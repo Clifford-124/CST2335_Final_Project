@@ -1,0 +1,53 @@
+<resources>
+
+    <string name="app_name">Proyecto final CST2335</string>
+    <string name="navigation_drawer_open">Abrir cajón de navegación</string>
+    <string name="navigation_drawer_close">Cerrar el cajón de navegación</string>
+    <string name="nav_header_title">Estudio de Android</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Encabezado de navegación</string>
+    <string name="action_settings">Ajustes</string>
+
+    <string name="menu_home">Hogar</string>
+    <string name="menu_gallery">Galería</string>
+    <string name="menu_slideshow">Diapositivas</string>
+
+    <string name="distance">Distancia (KM /MI)</string>
+    <string name="distance_km">km</string>
+    <string name="distance_ml">ml</string>
+    <string name="distance_in_km">Distancia en km o mi</string>
+    <string name="vehicle">Compañía de vehículos</string>
+    <string name="vehicle_hint">Seleccionar empresa de vehículos</string>
+    <string name="search_car_model">Modelos de búsqueda</string>
+    <string name="msg_no_internet">Sin conexión a Internet</string>
+    <string name="pexels_search_item">Escriba aquí para buscar imágenes</string>
+    <string name="search_pexels_pictures">Buscar imágenes</string>
+
+    <string name="help">Ayudar</string>
+    <string name="btn_delete">Borrar</string>
+    <string name="btn_close">Cerrar</string>
+    <string name="welcome_message">¡Bienvenido al mundo de las imágenes!</string>
+    <string name="btn_search">Buscar</string>
+    <string name="msg_title_help">Ayudar</string>
+    <string name="pexel_project">Proyecto Pexels</string>
+    <string name="msg_main_help">Toque el icono de hamburguesa para abrir una lista de proyectos disponibles y seleccione un proyecto para abrirlo. Escriba cualquier término en el campo de búsqueda y presione el botón de búsqueda, luego haga clic en la imagen para ver la página de detalles</string>
+    <string name="err_processing">Error al procesar la solicitud</string>
+    <string name="msg_confirm_delete">¿Estás seguro de que deseas eliminar esta foto?</string>
+    <string name="msg_title_confirm_delete">Confirmar</string>
+    <string name="no">No</string>
+    <string name="yes">sí</string>
+    <string name="msg_enter_to_search">Por favor introduce algo para buscar</string>
+    <string name="msg_wait">Procesando .. por favor espere...</string>
+    <string name="ok">OK</string>
+
+    <string name="project_pexels">Pexels</string>
+    <string name="project_owlbot_dictionary">Diccionario Owlbot</string>
+    <string name="project_covid_19_information_tracker">Rastreador de información Covid 19</string>
+    <string name="project_carbondixide">Interfaz de dióxido de carbono</string>
+
+    <string name="version">v1.0</string>
+    <string name="author_name">Seema Thapa Gurung</string>
+    <string name="activity_name">Actividad de Pexels</string>
+    <string name="desc">CST2335 Proyecto final \n\nPexels \n\nDiccionario Owlbot \n\nRastreador de información de Covid 19 \n\nInterfaz de dióxido de carbono \n\nPor favor, toque el icono de la hamburguesa en la parte superior izquierda para seleccionar un proyecto</string>
+
+</resources>
