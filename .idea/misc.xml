@@ -3,10 +3,37 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../../layout/custom_preview.xml" value="0.41875" />
+        <entry key="..\:/Users/gurung/OneDrive/Desktop/abhinav/pexel/CST2335_Final_Project/CST2335_Final_Project/app/src/main/res/layout/activity_carbon_detect.xml" value="0.18489583333333334" />
         <entry key="..\:/Users/gurung/OneDrive/Desktop/abhinav/seema-android/pexel-project/CST2335_Final_Project/app/src/main/res/layout/activity_pexels.xml" value="0.3625" />
         <entry key="..\:/Users/gurung/OneDrive/Desktop/abhinav/seema-android/pexel-project/CST2335_Final_Project/app/src/main/res/menu/main.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/user/AndroidStudioProjects/CST2335_Final_Project/app/src/main/res/layout/activity_carbon_detect.xml" value="0.2" />
         <entry key="..\:/Users/user/AndroidStudioProjects/CST2335_Final_Project/app/src/main/res/layout/content_main.xml" value="0.20416666666666666" />
+        <entry key="app/src/main/res/layout-sw600dp/empty_layout.xml" value="0.302734375" />
+        <entry key="app/src/main/res/layout-sw600dp/pexels_activit.xml" value="0.2926912568306011" />
+        <entry key="app/src/main/res/layout/activity_carbon_detect.xml" value="0.23020833333333332" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.4036458333333333" />
+        <entry key="app/src/main/res/layout/activity_main2.xml" value="0.3890625" />
+        <entry key="app/src/main/res/layout/activity_pexels.xml" value="0.4036458333333333" />
+        <entry key="app/src/main/res/layout/app_bar_main.xml" value="0.4036458333333333" />
+        <entry key="app/src/main/res/layout/content_main.xml" value="0.4036458333333333" />
+        <entry key="app/src/main/res/layout/empty_layout.xml" value="0.4036458333333333" />
+        <entry key="app/src/main/res/layout/fragment_detail.xml" value="0.40307971014492755" />
+        <entry key="app/src/main/res/layout/fragment_gallery.xml" value="0.23020833333333332" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.4036458333333333" />
+        <entry key="app/src/main/res/layout/fragment_list.xml" value="0.38813405797101447" />
+        <entry key="app/src/main/res/layout/fragment_slideshow.xml" value="0.23020833333333332" />
+        <entry key="app/src/main/res/layout/frame_imageview.xml" value="0.4036458333333333" />
+        <entry key="app/src/main/res/layout/frame_textview.xml" value="0.23020833333333332" />
+        <entry key="app/src/main/res/layout/nav_header_main.xml" value="0.23020833333333332" />
+        <entry key="app/src/main/res/layout/pexels_activit.xml" value="0.38813405797101447" />
+        <entry key="app/src/main/res/layout/popout_header.xml" value="0.3890625" />
+        <entry key="app/src/main/res/layout/row_image.xml" value="0.33" />
+        <entry key="app/src/main/res/menu/activity_main_drawer.xml" value="0.23020833333333332" />
+        <entry key="app/src/main/res/menu/main.xml" value="0.3890625" />
+        <entry key="app/src/main/res/menu/main_menu.xml" value="0.4036458333333333" />
+        <entry key="app/src/main/res/menu/nav_menu.xml" value="0.3890625" />
+        <entry key="app/src/main/res/menu/pexels_main.xml" value="0.3890625" />
       </map>
     </option>
   </component>
