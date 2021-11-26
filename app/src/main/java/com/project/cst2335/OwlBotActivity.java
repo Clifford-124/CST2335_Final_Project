@@ -161,7 +161,7 @@ public class OwlBotActivity extends AppCompatActivity {
         wordList.setLayoutManager(new LinearLayoutManager(this));
 
         SharedPreferences prefs = getSharedPreferences("MyData", Context.MODE_PRIVATE);
-        prefs.getString("VariableName", String "defaultValue");
+        prefs.getString("VariableName", "defaultValue");
         String Word = prefs.getString("Typed", "");
         SharedPreferences.Editor editor = prefs.edit();
         textWordSearch.setText(Word);

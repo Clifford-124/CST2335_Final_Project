@@ -5,6 +5,7 @@
 
     <application
         android:allowBackup="true"
+        android:fullBackupOnly="true"
         android:icon="@mipmap/ic_launcher"
         android:label="CST2355_Final_project"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -12,23 +13,41 @@
         android:theme="@style/Theme.CST2335_Final_Project">
 
         <activity
+
             android:name=".OwlBotActivity"
             android:exported="true">
 
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-
         </activity>
+      
+      <activity
+
+            android:name=".PexelsActivity"
+            android:exported="true"></activity>
+
         <activity
-            android:name=".MainActivity"
+            android:name=".CarbonDetectActivity"
             android:exported="true"
+
             android:label="CST2355_Final_Project"
             android:theme="@style/Theme.CST2335_Final_Project.NoActionBar">
 
+
+            android:label="Carbon Detect Interface">
+        <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
         </activity>
+        <activity
+            android:name=".CovidActivity"
+            android:exported="true"
+            android:label="Covid 19 Information Tracker">
+        </activity>
+        <activity
+            android:name=".ResultsActivity"
+            android:exported="false"
+            android:label="Search Results"/>
     </application>
 
 </manifest>
