@@ -14,6 +14,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
+import com.project.cst2335.Activities.CarbonActivity;
 import com.project.cst2335.R;
 import com.project.cst2335.Utils.Utilities;
 
@@ -51,6 +52,10 @@ public class MainActivity extends AppCompatActivity {
                     Intent newIntent = new Intent(MainActivity.this, PexelsActivity.class);
                     startActivity(newIntent);
                    // drawer.closeDrawers();
+                } else if (id == R.id.carbonInterface){
+                    Intent newIntent = new Intent(MainActivity.this, CarbonActivity.class);
+                    startActivity(newIntent);
+                    // drawer.closeDrawers();
                 }
                 return true;
             }
@@ -76,6 +81,10 @@ public class MainActivity extends AppCompatActivity {
                 // starting new activity when project is selected from the roolbar icon
                 Intent newIntent = new Intent(MainActivity.this, PexelsActivity.class);
                 startActivity(newIntent);
+                break;
+            case R.id.carbonInterfaceMenu:
+                Intent carbonIntent = new Intent(MainActivity.this, CarbonActivity.class);
+                startActivity(carbonIntent);
                 break;
         }
         return super.onOptionsItemSelected(item);

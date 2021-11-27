@@ -24,7 +24,6 @@ public class Constants {
 	public static final int TASK_LOAD_OFFLINE= 2;
 	public static final int TASK_LOAD= 1;
 
-
 	public static final String KEY_SRC=  "src";
 	public static final String KEY_LARGE=  "large";
 	public static final String KEY_LARGE2X=  "large2x";
@@ -38,7 +37,7 @@ public class Constants {
 	public static final String DEFAULT_SEARCH_TERM=  "cars";
 	public static final String PREFS_NAME=  "pexelsPrefs";
 
-
-
+    public static final String API_KEY = "Y0ZMTMhF0Wdxnawy2m5Q";
+    public static final String VEHICLE_MODELS_URL = "https://www.carboninterface.com/api/v1/vehicle_makes";
 
 }
