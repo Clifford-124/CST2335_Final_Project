@@ -14,7 +14,7 @@
         android:layout_margin="10dip"
         android:layout_alignParentTop="true"
         android:layout_above="@id/btnDelete"
-        android:id="@+id/imageView4"
+        android:id="@+id/imgDetail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:srcCompat="@tools:sample/avatars" />
@@ -27,6 +27,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/btn_delete" />
+
+    <Button
+        android:layout_margin="5dip"
+        android:layout_toRightOf="@id/btnDelete"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/btnSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="save" />
 
     <Button
         android:layout_margin="5dip"

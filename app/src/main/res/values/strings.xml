@@ -49,5 +49,7 @@
     <string name="author_name">Seema Thapa Gurung</string>
     <string name="activity_name">Pexels Activity</string>
     <string name="desc">CST2335 Final Project\n\nPexels\n\nOwlbot Dictionary\n\nCovid 19 Information tracker\n\nCarbon Dioxide interface\n\nPlease tap on the Hamburger icon on top left to select a project</string>
+    <string name="task_completed">Task Completed Successfully</string>
+    <string name="open_saved_photos">Open Saved Photos</string>
 
 </resources>

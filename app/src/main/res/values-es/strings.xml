@@ -46,8 +46,9 @@
     <string name="project_carbondixide">Interfaz de dióxido de carbono</string>
 
     <string name="version">v1.0</string>
-    <string name="author_name">Seema Thapa Gurung</string>
+    <string name="author_name">Abhinav Kumar</string>
     <string name="activity_name">Actividad de Pexels</string>
     <string name="desc">CST2335 Proyecto final \n\nPexels \n\nDiccionario Owlbot \n\nRastreador de información de Covid 19 \n\nInterfaz de dióxido de carbono \n\nPor favor, toque el icono de la hamburguesa en la parte superior izquierda para seleccionar un proyecto</string>
-
+    <string name="task_completed">Tarea completada con éxito</string>
+    <string name="open_saved_photos">Abrir fotos guardadas</string>
 </resources>
