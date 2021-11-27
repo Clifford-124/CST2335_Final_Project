@@ -19,6 +19,7 @@ import com.project.cst2335.Activities.PexelsActivity;
 import com.project.cst2335.R;
 import com.project.cst2335.Models.PhotoModel;
 import com.project.cst2335.Utils.Constants;
+import com.project.cst2335.Utils.Utilities;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -29,15 +30,30 @@ import java.net.URL;
 import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
-
+/**
+ *
+ * Photo Adapter to populate items in recycler view, it is responsible to downlaading and displaying images from api
+ *
+ * @author Seema Thapa Gurung
+ * @version 1.0
+ */
 public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.PhotoItemView> {
 
     private List<PhotoModel> _photos;
     private Context context;
+    private boolean _offlineViewing;
 
-    public PhotosAdapter(List<PhotoModel> photos, Context context) {
+    /**
+     * Constructor for adapter
+     *
+     * @param photos list of photos to populate
+     * @param context context to use
+     * @param offlineViewing if the use is viewing offline photos
+     */
+    public PhotosAdapter(List<PhotoModel> photos, Context context, boolean offlineViewing) {
         this.context = context;
         this._photos = photos;
+        this._offlineViewing = offlineViewing;
     }
 
     @Override
@@ -56,7 +72,6 @@ public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.PhotoItemV
     @Override
     public void onBindViewHolder(@NonNull PhotoItemView holder, int position) {
         PhotoModel photo = _photos.get(position);
-
         loadImageInBackground(photo,holder);
     }
 
@@ -65,16 +80,24 @@ public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.PhotoItemV
         return _photos.size();
     }
 
+    /**
+     * loads image from internal storage or from api in the background
+     *
+     * @param photo photo to load
+     * @param holder holder to use, which has the imageview
+     *
+     */
     private void loadImageInBackground(PhotoModel photo,PhotoItemView holder){
         holder.progressbar.setVisibility(View.VISIBLE);
         Executor newThread = Executors.newSingleThreadExecutor();
         newThread.execute(()-> {
-            Bitmap bitmap = loadImage(photo.tinyUrl,String.valueOf(photo.getId()));
+            Bitmap bitmap = Utilities.loadImage(photo,Constants.PEXELS_LOAD_SMALL_IMAGE,context);
             ((AppCompatActivity) context).runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
+                    // hide the progress bar first
                     holder.progressbar.setVisibility(View.GONE);
-                    if(bitmap!=null){
+                    if(bitmap!=null){ //make sure the image is not null before setting
                         holder.img.setImageBitmap(bitmap);
                     }
                     else{
@@ -85,6 +108,9 @@ public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.PhotoItemV
         });
     }
 
+    /**
+     *  viewholder to use in adapter
+     */
     protected class PhotoItemView extends  RecyclerView.ViewHolder{
 
         ImageView img;
@@ -101,61 +127,11 @@ public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.PhotoItemV
                 public void onClick(View v) {
                     PexelsActivity parentActivity = (PexelsActivity) context;
                   int position = getAdapterPosition();
-                  parentActivity.userClickMessage(_photos.get(position),position);
+                  // when user clicks on a photos we pass that photo to the detail fragment
+                  parentActivity.photoClicked(_photos.get(position),_offlineViewing);
                 }
             });
-
         }
     }
 
-    public Bitmap loadImage(String imageUrl, String name) {
-        Bitmap bitmap = null;
-        try {
-            bitmap  = getImageFromStorage(name);
-            if (bitmap == null) {
-                URL url = new URL(imageUrl);
-                bitmap = BitmapFactory.decodeStream(url.openConnection().getInputStream());
-                saveImageToInternalStorage(bitmap, name);
-            }
-            return bitmap;
-
-        }
-        catch (Exception e) { }
-        return null;
-    }
-
-    private Bitmap getImageFromStorage(String name)
-    {
-        try {
-            ContextWrapper cw = new ContextWrapper(context);
-            File directory = cw.getDir(Constants.PEXELS_IMAGE_FOLDER, Context.MODE_PRIVATE);
-            File file=new File(directory,name+".jpg");
-            if(file.exists()){
-                Bitmap bitmap = BitmapFactory.decodeStream(new FileInputStream(file));
-                return bitmap;
-            }
-
-
-        }
-        catch (FileNotFoundException e) { }
-        return null;
-    }
-
-    public String saveImageToInternalStorage(Bitmap bitmapImage,String name ){
-        ContextWrapper cw = new ContextWrapper(context);
-        File directory = cw.getDir(Constants.PEXELS_IMAGE_FOLDER, Context.MODE_PRIVATE);
-        File path=new File(directory,name+".jpg");
-
-        FileOutputStream fos = null;
-        try {
-            fos = new FileOutputStream(path);
-            bitmapImage.compress(Bitmap.CompressFormat.PNG, 100, fos);
-        } catch (Exception e) {}
-        finally {
-            try {
-                fos.close();
-            } catch (IOException e) {}
-        }
-        return directory.getAbsolutePath();
-    }
 }

@@ -16,12 +16,12 @@
         android:orientation="horizontal">
     <FrameLayout
         android:layout_width="300dp"
-        android:id="@+id/fragmentRoom"
+        android:id="@+id/framePhotosList"
         android:layout_height="match_parent"
         android:background="@color/white"/>
     <FrameLayout
         android:layout_width="match_parent"
-        android:id="@+id/detailsRoom"
+        android:id="@+id/framePhotoDetails"
         android:layout_height="match_parent"
         android:background="#C0C0C0"/>
     </LinearLayout>
