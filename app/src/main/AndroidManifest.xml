@@ -15,9 +15,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CST2335_Final_Project">
         <activity
-            android:name=".Activities.CarbonActivity"
-            android:label="Carbon Interface"
+            android:name=".Activities.CarModelDetailActivity"
             android:exported="true" />
+        <activity
+            android:name=".Activities.CarbonActivity"
+            android:exported="true"
+            android:label="Carbon Interface" />
         <activity
             android:name=".Activities.MainActivity"
             android:exported="true">

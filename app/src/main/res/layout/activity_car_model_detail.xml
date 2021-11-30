@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/carbon_background_color"
+    android:layout_height="match_parent"
+    tools:context=".Activities.CarModelDetailActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/toolbar_detail"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:id="@+id/modelDetail"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_detail"
+        android:background="@color/white"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:id="@+id/estimateButtons"
+        app:layout_wrapBehaviorInParent="horizontal_only"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/modelDetail"
+        android:weightSum="3"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/saveEstimate"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:layout_height="wrap_content"
+            android:text="Save"/>
+
+        <Button
+            android:id="@+id/deleteEstimate"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+
+            android:layout_marginStart="10dp"
+            android:layout_height="wrap_content"
+            android:text="Delete"/>
+
+        <Button
+            android:id="@+id/closeEstimate"
+            android:layout_width="0dp"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:layout_marginStart="10dp"
+            android:layout_height="wrap_content"
+            android:text="Close"/>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,7 +5,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="Model"
+        android:textColor="@color/carbon_text_color"
         android:id="@+id/modelName" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

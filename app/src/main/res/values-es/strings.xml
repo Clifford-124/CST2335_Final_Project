@@ -51,4 +51,10 @@
     <string name="desc">CST2335 Proyecto final \n\nPexels \n\nDiccionario Owlbot \n\nRastreador de información de Covid 19 \n\nInterfaz de dióxido de carbono \n\nPor favor, toque el icono de la hamburguesa en la parte superior izquierda para seleccionar un proyecto</string>
     <string name="task_completed">Tarea completada con éxito</string>
     <string name="open_saved_photos">Abrir fotos guardadas</string>
+    <string name="saved_car_model">Modelos guardadas abiertas</string>
+    <string name="carbon_dioxide_version">v1.0</string>
+    <string name="carbon_dioxide_author_name">Clifford Leonard Dsa</string>
+    <string name="carbon_dioxide_activity_main">"Interfaz de dióxido de carbono "</string>
+    <string name="carbon_dioxide_activity_detail">Detalles</string>
+    <string name="carbon_estimates">"gramos (g):% 1f libras (lb):% 2f kilogramos (kg):% 3f toneladas métricas (tm):% 4f "</string>
 </resources>

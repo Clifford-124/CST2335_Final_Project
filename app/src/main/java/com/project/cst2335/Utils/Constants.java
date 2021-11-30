@@ -39,5 +39,12 @@ public class Constants {
 
     public static final String API_KEY = "Y0ZMTMhF0Wdxnawy2m5Q";
     public static final String VEHICLE_MODELS_URL = "https://www.carboninterface.com/api/v1/vehicle_makes";
+    public static final String VEHICLE_ESTIMATES_URL = "https://www.carboninterface.com/api/v1/estimates";
 
+	public static final String ARG_MODEL_ID   ="model_id";
+	public static final String ARG_MODEL_NAME ="model_name";
+	public static final String ARG_VEHICLE_MAKE ="vehicle_make";
+	public static final String ARG_DISPLAY    ="display";
+	public static final String ARG_DISTANCE   ="distance";
+	public static final String ARG_DISTANCE_UNIT   ="distance_unit";
 }

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/carbon_background_color"
+
+    tools:context=".Fragments.CarModelDetailFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:id="@+id/estimateDetails"
+        android:layout_height="200dp"
+        android:padding="10dp"
+        android:gravity="center"
+        android:layout_margin="30dp"
+        android:textColor="@color/carbon_text_color"
+        android:background="@color/carbon_item_background_color" />
+
+</FrameLayout>

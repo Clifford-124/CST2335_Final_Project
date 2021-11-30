@@ -18,6 +18,14 @@
     <string name="vehicle">Vehicle Company</string>
     <string name="vehicle_hint">Select Vehicle Company</string>
     <string name="search_car_model">Search Models</string>
+    <string name="saved_car_model">Open Saved Models</string>
+
+    <string name="carbon_dioxide_version">v1.0</string>
+    <string name="carbon_dioxide_author_name">Clifford Leonard Dsa</string>
+    <string name="carbon_dioxide_activity_main">Carbon Dioxide Interface</string>
+    <string name="carbon_dioxide_activity_detail">Details</string>
+
+    <string name="carbon_estimates">grams(g) : %1f  pounds (lb) : %2f  kilograms (kg) : %3f  metric tons (mt) : %4f</string>
 
     <string name="pexels_search_item">Type here to search pictures</string>
     <string name="search_pexels_pictures">Search Pictures</string>
