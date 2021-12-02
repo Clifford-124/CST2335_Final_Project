@@ -198,7 +198,11 @@ public class CarbonActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
+<<<<<<< HEAD
         getMenuInflater().inflate(R.menu.main_menu, menu);
+=======
+        //getMenuInflater().inflate(R.menu.main, menu);
+>>>>>>> c30ff24 (Adding some comments)
         return true;
     }
 

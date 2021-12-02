@@ -15,6 +15,7 @@
     </style>
 
     <style name="Theme.CST2335_Final_Project.NoActionBar">
+<!--        No action bar and no title-->
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>

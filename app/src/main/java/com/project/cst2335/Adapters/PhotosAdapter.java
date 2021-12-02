@@ -122,11 +122,12 @@ public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.PhotoItemV
             img = itemView.findViewById(R.id.imageView3);
             progressbar = itemView.findViewById(R.id.progressBar);
 
+            //when a photo is clicked
             img.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     PexelsActivity parentActivity = (PexelsActivity) context;
-                  int position = getAdapterPosition();
+                  int position = getAdapterPosition(); // like position of the photo in array
                   // when user clicks on a photos we pass that photo to the detail fragment
                   parentActivity.photoClicked(_photos.get(position),_offlineViewing);
                 }
