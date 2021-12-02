@@ -6,36 +6,45 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.project.cst2335.Activities.CarModelDetailActivity;
+import com.project.cst2335.Activities.CarbonActivity;
 import com.project.cst2335.Models.CarModel;
 import com.project.cst2335.R;
 import com.project.cst2335.Utils.Constants;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class CarModelAdapter extends RecyclerView.Adapter<CarModelAdapter.CarModelsView> {
 
     ArrayList<CarModel> carModels;
     Context context;
-    String distance_unit="";
-    String vehicle_make;
+    String display;
     int distance;
 
-    public CarModelAdapter(Context context,ArrayList<CarModel> carModels,int distance,String distance_unit,String vehicle_make) {
-        this.carModels = carModels;
-        this.context = context;
-        this.distance = distance;
-        this.distance_unit = distance_unit;
-        this.vehicle_make = vehicle_make;
+    ItemClickListener mItemClickListener;
+
+    //Define Interface method here
+    public interface ItemClickListener {
+        void onItemClick(CarModel model,String Display);
     }
 
     public CarModelAdapter(Context context,ArrayList<CarModel> carModels) {
         this.carModels = carModels;
         this.context = context;
+    }
+
+    public void addItemClickListener(ItemClickListener listener) {
+        mItemClickListener = listener;
+    }
+
+    public void setDisplay(String display) {
+        this.display = display;
     }
 
     @NonNull
@@ -65,24 +74,12 @@ public class CarModelAdapter extends RecyclerView.Adapter<CarModelAdapter.CarMod
             itemView.setOnClickListener(click -> {
 
                 int position = getAdapterPosition();
+
                 String model_id = ((CarModel) carModels.get(position)).getId();
                 String model_name = ((CarModel) carModels.get(position)).getCarName();
 
-                Intent detailIntent = new Intent(context, CarModelDetailActivity.class);
+                mItemClickListener.onItemClick(carModels.get(position),display);
 
-                detailIntent.putExtra(Constants.ARG_MODEL_ID, model_id);
-                detailIntent.putExtra(Constants.ARG_MODEL_NAME, model_name);
-                detailIntent.putExtra(Constants.ARG_VEHICLE_MAKE, vehicle_make);
-
-                if (!distance_unit.contentEquals("")) {
-                    detailIntent.putExtra(Constants.ARG_DISTANCE, distance);
-                    detailIntent.putExtra(Constants.ARG_DISTANCE_UNIT, distance_unit);
-                    detailIntent.putExtra(Constants.ARG_DISPLAY, "fromAPI");
-                }
-                else
-                    detailIntent.putExtra(Constants.ARG_DISPLAY, "fromDB");
-
-                context.startActivity(detailIntent);
             });
 
             modelName = itemView.findViewById(R.id.modelName);
