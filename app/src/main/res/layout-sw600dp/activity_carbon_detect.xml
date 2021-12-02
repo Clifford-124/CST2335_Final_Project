@@ -40,6 +40,7 @@
         app:layout_constraintTop_toBottomOf="@id/travelDistance">
 
         <RadioButton
+            android:id="@+id/unit_km"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -48,6 +49,7 @@
             android:textSize="16sp" />
 
         <RadioButton
+            android:id="@+id/unit_mi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/carbon_text_color"

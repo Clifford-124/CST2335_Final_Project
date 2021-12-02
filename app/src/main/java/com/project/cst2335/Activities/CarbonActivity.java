@@ -24,14 +24,16 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.project.cst2335.Adapters.CarModelAdapter;
-import com.project.cst2335.Fragments.CarModelDetailFragment;
+import com.project.cst2335.Database.DatabaseHelper;
 import com.project.cst2335.Models.CarModel;
 import com.project.cst2335.R;
 import com.project.cst2335.Utils.Constants;
+import com.project.cst2335.Utils.Utilities;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -55,7 +57,7 @@ import java.util.concurrent.Executors;
  * @author Cliff
  * @version 1.0
  */
-public class CarbonActivity extends AppCompatActivity {
+public class CarbonActivity extends AppCompatActivity  implements CarModelAdapter.ItemClickListener {
 
     //Declaring Sharedpreferences to stpre data
     SharedPreferences sharedPref;
@@ -65,9 +67,10 @@ public class CarbonActivity extends AppCompatActivity {
     //Views
     AutoCompleteTextView vehicleCompany;
     EditText distance;
-    AppCompatButton search,open_saved_models;
+    Button search, open_saved_models;
     RecyclerView modelList;
     ConstraintLayout rootLayout;
+    RadioButton btn_km, btn_mi;
 
     //Adapter for Recycler
     CarModelAdapter adt;
@@ -78,6 +81,9 @@ public class CarbonActivity extends AppCompatActivity {
 
     //Contains Vehicle make name and id
     HashMap<String, String> vehicleCompanyArray;
+
+    //Database functions
+    private DatabaseHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,25 +99,29 @@ public class CarbonActivity extends AppCompatActivity {
 
         myToolbar.setTitle(activity);
         myToolbar.setSubtitle(author + " - " + version);
+
         setSupportActionBar(myToolbar);
 
         //Initializing all views
-        vehicleCompany =  (AutoCompleteTextView)findViewById(R.id.vehicleCompanies);
+        vehicleCompany = (AutoCompleteTextView) findViewById(R.id.vehicleCompanies);
         distance = (EditText) findViewById(R.id.travelDistance);
         search = (AppCompatButton) findViewById(R.id.searchModels);
         open_saved_models = (AppCompatButton) findViewById(R.id.openSavedModels);
         modelList = (RecyclerView) findViewById(R.id.modelList);
         rootLayout = (ConstraintLayout) findViewById(R.id.rootLayout);
+        btn_km = (RadioButton) findViewById(R.id.unit_km);
+        btn_mi = (RadioButton) findViewById(R.id.unit_mi);
+        btn_km.setChecked(true);
 
         //Adding 2 vehicle_makes in Array
-        vehicleCompanyArray = new HashMap<String,String>();
-        vehicleCompanyArray.put("Nissan","bf111d61-70c6-476f-bf45-9bad9e526d4c");
-        vehicleCompanyArray.put("Toyoto","2b1d0cd5-59be-4010-83b3-b60c5e5342da");
-        vehicleCompanyArray.put("Ford","647f3fec-9a31-48c8-acc2-359f39cc3122");
+        vehicleCompanyArray = new HashMap<String, String>();
+        vehicleCompanyArray.put("Nissan", "bf111d61-70c6-476f-bf45-9bad9e526d4c");
+        vehicleCompanyArray.put("Toyoto", "2b1d0cd5-59be-4010-83b3-b60c5e5342da");
+        vehicleCompanyArray.put("Ford", "647f3fec-9a31-48c8-acc2-359f39cc3122");
 
         //Showing list of Vehicle Companies
         ArrayAdapter<String> adapter = new ArrayAdapter<String>
-                (this,android.R.layout.select_dialog_item, vehicleCompanyArray.keySet().toArray(new String[0]));
+                (this, android.R.layout.select_dialog_item, vehicleCompanyArray.keySet().toArray(new String[0]));
 
         vehicleCompany.setThreshold(1);
         //Set Adapter in AutoComplete TextView
@@ -125,7 +135,7 @@ public class CarbonActivity extends AppCompatActivity {
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                validateInputs();
+                loadFromAPI();
             }
         });
 
@@ -133,55 +143,138 @@ public class CarbonActivity extends AppCompatActivity {
         open_saved_models.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                validateInputs();
+                loadFromDB();
             }
         });
 
+        db = new DatabaseHelper(this);
 
         models = new ArrayList<CarModel>();
-        //Set RecyclerView Layout
-        adt = new CarModelAdapter(this,models,Integer.parseInt(distance.getText().toString()),"ml","Toyoto");
-        //Set Adapter & Layout in Recycler View
+
+        //Set Layout in Recycler View
         modelList.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+    }
+
+
+    /**
+     *
+     * Reccycler view's adapter click listener. Will start new activity
+     * when user selects any model from list
+     *
+     * @param model
+     * @param display
+     */
+    @Override
+    public void onItemClick(CarModel model, String display) {
+
+        String company = vehicleCompany.getText().toString();
+        String travelDistance = distance.getText().toString();
+        String travelDistanceUnit = "km";
+        if (btn_mi.isChecked()) {
+            travelDistanceUnit = "mi";
+        } else if (btn_km.isChecked()) {
+            travelDistanceUnit = "km";
+        }
+
+        //Create new Intent
+        Intent detailIntent = new Intent(CarbonActivity.this, CarModelDetailActivity.class);
+
+        //Pass data in intent
+        detailIntent.putExtra(Constants.ARG_MODEL_ID, model.getId());
+        detailIntent.putExtra(Constants.ARG_MODEL_NAME, model.getCarName());
+        detailIntent.putExtra(Constants.ARG_VEHICLE_MAKE, company);
+
+        if (display.contentEquals("fromAPI")) {
+            //set display as fromAPI and pass all details related to model
+            detailIntent.putExtra(Constants.ARG_DISTANCE, Integer.parseInt(travelDistance));
+            detailIntent.putExtra(Constants.ARG_DISTANCE_UNIT, travelDistanceUnit);
+            detailIntent.putExtra(Constants.ARG_DISPLAY, "fromAPI");
+        } else if (display.contentEquals("fromDB")) {
+            //If model is From database set display as fromDB and fetch details from db
+            detailIntent.putExtra(Constants.ARG_DISPLAY, "fromDB");
+        }
+        //Clear recycler view's adapter
+        modelList.setAdapter(null);
+        //start activity
+        startActivity(detailIntent);
+    }
+
+    /**
+     *
+     * Will display carmodels in recyclerview from database or from api
+     *
+     * @param display
+     */
+    public void showCarModels(String display) {
+        Snackbar.make(rootLayout, getResources().getString(R.string.vehicle_make_found,models.size()), Snackbar.LENGTH_LONG).show();
+        //adt.notifyDataSetChanged();
+        adt = new CarModelAdapter(this, models);
+        adt.setDisplay(display);
+        //Set Adapter & Layout in Recycler View
         modelList.setAdapter(adt);
 
+        //set Adapter's click listener
+        adt.addItemClickListener(this);
     }
 
 
-    public void showCarModels() {
-        Snackbar.make(rootLayout, "Total "+models.size()+" vehicle makes found", Snackbar.LENGTH_LONG).show();
-        adt.notifyDataSetChanged();
-    }
-
+    /**
+     *
+     * Will retrieve data stored in shared preference
+     * and set in Views
+     */
     public void retrieveData() {
-        SharedPreferences prefs = getSharedPreferences (preference,MODE_PRIVATE);
+        SharedPreferences prefs = getSharedPreferences(preference, MODE_PRIVATE);
         String companyValue = prefs.getString("company", "-");
         String travelDistanceValue = prefs.getString("travelDistance", "-");
         if (!travelDistanceValue.equals("-")) distance.setText(travelDistanceValue);
         if (!companyValue.equals("-")) vehicleCompany.setText(companyValue);
     }
 
-    public void validateInputs() {
+    /**
+     * This function will validate input from user and display error message in Toast
+     *
+     * @param travelDistance
+     * @param company
+     * @return
+     */
+    public boolean validateInputs(String travelDistance,String company) {
+        if (travelDistance.equals("")) {
+            Toast.makeText(CarbonActivity.this, getResources().getString((R.string.enter_distance)), Toast.LENGTH_LONG).show();
+            distance.requestFocus();
+            return false;
+        } else if (travelDistance.equals("")) {
+            Toast.makeText(CarbonActivity.this, getResources().getString(R.string.select_company), Toast.LENGTH_LONG).show();
+            vehicleCompany.requestFocus();
+            return false;
+        }
+        return true;
+    }
+
+
+    /**
+     *
+     * This function will validate user's input
+     * and save date in shared preference
+     * and will call api
+     *
+     */
+    public void loadFromAPI() {
         String company = vehicleCompany.getText().toString();
         String travelDistance = distance.getText().toString();
-        if (travelDistance.equals("")) {
-            Toast.makeText(CarbonActivity.this,"Please enter travel distance",Toast.LENGTH_LONG).show();
-            distance.requestFocus();
-        } else if (company.equals("")) {
-            Toast.makeText(CarbonActivity.this,"Please enter vehicle company",Toast.LENGTH_LONG).show();
-            vehicleCompany.requestFocus();
-        }
-        else {
-            saveData(company, travelDistance);
-            models.clear();
-            adt.notifyDataSetChanged();
-            onLoadModels();
+        if (validateInputs(travelDistance,company)) {
+            if (Utilities.checkConnectivity(CarbonActivity.this)) {
+                saveData(company, travelDistance);
+                onLoadModels();
+            } else {
+                Snackbar.make(rootLayout, getResources().getString(R.string.msg_no_internet), Snackbar.LENGTH_LONG).show();
+            }
         }
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.help:
                 // showing help alert dialog
                 showHelpDialog();
@@ -195,6 +288,14 @@ public class CarbonActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+
+    /**
+     *
+     * This function will load help menu
+     *
+     * @param menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -202,39 +303,61 @@ public class CarbonActivity extends AppCompatActivity {
         return true;
     }
 
+    /**
+     *
+     * Help Menu - will display AlertDialog box
+     *
+     */
     public void showHelpDialog() {
         new AlertDialog.Builder(CarbonActivity.this)
-                .setTitle("Carbon Dioxide Interface")
-                .setMessage("This interface will calculates how much CO2 (carbon dioxide) is generated from driving a car")
+                .setTitle(getResources().getString(R.string.carbon_interface))
+                .setMessage(getResources().getString(R.string.carbon_interface_menu))
                 .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         return;
                     }
                 }).show();
     }
-    public void saveData(String company,String travelDistance) {
+
+
+    /**
+     *
+     * Will svae data in shared preferences
+     *
+     * @param company
+     * @param travelDistance
+     */
+    public void saveData(String company, String travelDistance) {
         editor = getSharedPreferences(preference, MODE_PRIVATE).edit();
         editor.putString("company", company);
         editor.putString("travelDistance", travelDistance);
         editor.apply();
     }
 
+
+    /**
+     *
+     * Will load data from API
+     * Parse response in CarModels Array list
+     *
+     */
     public void onLoadModels() {
         String vehicleMakeID = vehicleCompanyArray.get(vehicleCompany.getText().toString());
 
         AlertDialog dialog = new AlertDialog.Builder(CarbonActivity.this)
-                .setTitle("Downloading")
-                .setMessage("Vehicle models for "+vehicleCompany.getText())
+                .setTitle(getResources().getString(R.string.downloading))
+                .setMessage(getResources().getString(R.string.model_download_message,vehicleCompany.getText()))
                 .setView(new ProgressBar(CarbonActivity.this))
+                .setCancelable(false)
                 .show();
 
         Executor newThread = Executors.newSingleThreadExecutor();
-        newThread.execute( () -> {
+        newThread.execute(() -> {
             try {
 
-                URL url = new URL(Constants.VEHICLE_MODELS_URL+"/"+vehicleMakeID+"/vehicle_models");
+                URL url = new URL(Constants.VEHICLE_MODELS_URL + "/" + vehicleMakeID + "/vehicle_models");
                 HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-                urlConnection.setRequestProperty("Authorization", "Bearer "+Constants.API_KEY);
+                urlConnection.setRequestProperty("Authorization", "Bearer " + Constants.API_KEY);
                 urlConnection.setRequestMethod("GET");
                 int statusCode = urlConnection.getResponseCode();
                 if (statusCode == 200) {
@@ -249,27 +372,57 @@ public class CarbonActivity extends AppCompatActivity {
 
                     JSONArray carrray = new JSONArray(dta.toString());
                     for (int i = 0; i < carrray.length(); i++) {
-                        System.out.println("Data..." + carrray.getJSONObject(i).toString());
                         JSONObject carObj = carrray.getJSONObject(i).getJSONObject("data");
+
                         CarModel cmodel = new CarModel(carObj.getString("id"),
                                 carObj.getJSONObject("attributes").getString("name"));
                         models.add(cmodel);
+
                     }
 
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             dialog.hide();
-                            showCarModels();
+                            showCarModels("fromAPI");
                         }
                     });
 
                 }
-            }
-            catch(Exception e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         });
     }
 
+
+    /**
+     *
+     * Will load data from database
+     * and parse in CarModel Array list
+     *
+     */
+    private void loadFromDB() {
+        AlertDialog dialog = new AlertDialog.Builder(CarbonActivity.this)
+                .setTitle(getResources().getString(R.string.loading))
+                .setMessage(getResources().getString(R.string.model_download_message,vehicleCompany.getText()))
+                .setView(new ProgressBar(CarbonActivity.this))
+                .setCancelable(false)
+                .show();
+
+        Executor newThread = Executors.newSingleThreadExecutor();
+        newThread.execute(() -> { // start the executor
+
+            models.clear();
+            models = db.getModels();
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    //adt.setDisplay("fromDB");
+                    dialog.dismiss();
+                    showCarModels("fromDB");
+                }
+            });
+        });
+    }
 }
