@@ -73,6 +73,7 @@ public class PhotoDetailFragment extends Fragment {
 
         db= new DatabaseHelper(getContext());
 
+        //when close button is clicked
         btnClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,6 +81,7 @@ public class PhotoDetailFragment extends Fragment {
            }
         });
 
+        //when save button is clicked
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,6 +89,7 @@ public class PhotoDetailFragment extends Fragment {
             }
         });
 
+        //when delete button is clicked, open the Alertdialog
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

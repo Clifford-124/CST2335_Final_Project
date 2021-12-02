@@ -42,12 +42,12 @@ public class Utilities {
      * check if internet is available
      *
      * @param context context to use
-     * @return if internet is availble or not
+     * @return if internet is available or not
      */
     public static boolean checkConnectivity(Context context) {
 
         ConnectivityManager cm = (ConnectivityManager) context
-                .getSystemService(Context.CONNECTIVITY_SERVICE);
+                .getSystemService(Context.CONNECTIVITY_SERVICE); //https://developer.android.com/reference/android/net/ConnectivityManager#getActiveNetworkInfo()
         NetworkInfo ni = cm.getActiveNetworkInfo();
         if (ni != null && ni.isConnected() && ni.isAvailable())
             return true;
@@ -245,7 +245,8 @@ public class Utilities {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle(title);
         builder.setMessage(message);
-        builder.setPositiveButton(R.string.ok, (dialog, cl)->{});
+        builder.setPositiveButton(R.string.ok, (dialog, cl)->{}); //when ok button is clicked
+
         //make the Alert window appear
         builder.create().show();
     }

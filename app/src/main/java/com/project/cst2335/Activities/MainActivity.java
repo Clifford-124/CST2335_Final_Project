@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
@@ -36,13 +37,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // setting all the controls
-        toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        toolbar = findViewById(R.id.toolbar);//find the toolbar
+        setSupportActionBar(toolbar); // load the toolbar
+
         drawer = findViewById(R.id.drawer_layout);
-        toggle = new ActionBarDrawerToggle(this,drawer,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
+        toggle = new ActionBarDrawerToggle(this,drawer,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close); //create Hamburger button
+        drawer.addDrawerListener(toggle); //make the button popout
         toggle.syncState();
+
         navigationView =findViewById(R.id.popout_menu);
+
+        //when user clicks on the popout menu
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -57,32 +62,46 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(newIntent);
                     // drawer.closeDrawers();
                 }
+
+                drawer.closeDrawer(GravityCompat.START);//close the drawer
                 return true;
             }
         });
 
     }
 
+    /**
+     * initialize the toolbar , by loading layout main_menu
+     * @param menu Menu object
+     * @return true
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main_menu,menu);
+        inflater.inflate(R.menu.main_menu,menu);//load layout file main_menu to menu object passed
         return true;
     }
 
+    /**
+     * This function responds when the user clicks on the MenuItem
+     * @param item , the MenuItem object that is selected by user
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()){ //get the id of the item
+            //check if the id matches with one of the id from menu/main_menu.xml
             case R.id.help:
                 // showing help alert dialog
                 Utilities.showAlertDialog(getResources().getString(R.string.msg_title_help),getResources().getString(R.string.msg_main_help), MainActivity.this);
                 break;
             case R.id.pexelsProject:
-                // starting new activity when project is selected from the roolbar icon
+                // starting Pexel activity when project is selected from the toolbar icon
                 Intent newIntent = new Intent(MainActivity.this, PexelsActivity.class);
                 startActivity(newIntent);
                 break;
             case R.id.carbonInterfaceMenu:
+                // starting Carbon activity when project is selected from the toolbar icon
                 Intent carbonIntent = new Intent(MainActivity.this, CarbonActivity.class);
                 startActivity(carbonIntent);
                 break;

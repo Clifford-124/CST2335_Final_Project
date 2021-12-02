@@ -88,6 +88,7 @@ public class PhotoListFragment extends Fragment {
             validateInput();
         });
 
+
          btnSavedPhotos.setOnClickListener((vw)->{
 
              // get the photos from database
@@ -187,11 +188,11 @@ public class PhotoListFragment extends Fragment {
     private List<PhotoModel> getDataFromApi(){
         try{
             // getting json from api
-            URL url =  new URL(Constants.URL_GET_PHOTOS+userInput);
-            HttpURLConnection urlConnection = (HttpURLConnection)url.openConnection();
+            URL url =  new URL(Constants.URL_GET_PHOTOS+userInput); //create url object
+            HttpURLConnection urlConnection = (HttpURLConnection)url.openConnection(); //connect to server
             urlConnection.setRequestProperty (Constants.PEXELS_HEADER, Constants.PEXELS_API_KEY);
             if(urlConnection.getResponseCode()==HttpURLConnection.HTTP_OK){
-                InputStream in = new BufferedInputStream(urlConnection.getInputStream());
+                InputStream in = new BufferedInputStream(urlConnection.getInputStream());//waits for a response from the server
                 String text =(new BufferedReader(new InputStreamReader(in, StandardCharsets.UTF_8))).lines().collect(Collectors.joining("\n"));
                 if(text!=null && text!=""){ // make sure json has returned
                     return parseDate(text); // parse the data to get the photo urls

@@ -26,20 +26,20 @@ public class PexelsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.pexels_activit);
+        setContentView(R.layout.pexels_activity);
         Toolbar myToolbar = findViewById(R.id.toolbar);
         String activity = getResources().getString(R.string.activity_name);
         String author = getResources().getString(R.string.author_name);
         String version = getResources().getString(R.string.version);
         myToolbar.setTitle(activity + " - " + " - " + author + " - " + version);
         setSupportActionBar(myToolbar);
-        isTablet = findViewById(R.id.framePhotoDetails) != null;
+        isTablet = findViewById(R.id.framePhotoDetails) != null;// this is null if on phone, true for tablet, false for phone
 
 
-        PhotoListFragment chatFragment = new PhotoListFragment();
+        PhotoListFragment photoListFragment = new PhotoListFragment();
         FragmentManager fMgr = getSupportFragmentManager();
         FragmentTransaction tx = fMgr.beginTransaction();
-        tx.add(R.id.framePhotosList, chatFragment);
+        tx.add(R.id.framePhotosList, photoListFragment);
         tx.commit();
     }
 
@@ -53,6 +53,7 @@ public class PexelsActivity extends AppCompatActivity {
         // passing the photo to the detail fragment
         PhotoDetailFragment md = new PhotoDetailFragment(photo,offlineViewing);
         if (isTablet) { // if device is a tablet then display a different layout
+            // addToBackStack -- so that we come back to the List Fragment when we click back button
             getSupportFragmentManager().beginTransaction().replace(R.id.framePhotoDetails, md).addToBackStack("PhotoListFragment").commit();
         } else {
             getSupportFragmentManager().beginTransaction().replace(R.id.framePhotosList, md).addToBackStack("PhotoListFragment").commit();
