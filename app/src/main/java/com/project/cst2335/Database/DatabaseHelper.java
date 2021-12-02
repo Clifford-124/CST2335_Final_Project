@@ -183,9 +183,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 			if (cursor.moveToFirst()) {
 
 				do {
-					int photo_id = cursor.getInt(cursor.getColumnIndex(PHOTO_ID));
-					String tiny_url = cursor.getString(cursor.getColumnIndex(PHOTO_TINY_URL));
-					String large_url = cursor.getString(cursor.getColumnIndex(PHOTO_LARGE_URL));
+					int photo_id = cursor.getInt(cursor.getColumnIndex(PHOTO_ID));//0
+					String tiny_url = cursor.getString(cursor.getColumnIndex(PHOTO_TINY_URL));//1
+					String large_url = cursor.getString(cursor.getColumnIndex(PHOTO_LARGE_URL));//2
 
 					PhotoModel photo = new PhotoModel();
 					photo.setId(photo_id);
