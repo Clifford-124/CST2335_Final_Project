@@ -235,7 +235,7 @@ public class Utilities {
     }
 
     /**
-     * shows alert diallog
+     * shows alert dialog
      * @param title title to display on alert dialog
      * @param message  message to display on alert dialog
      * @param context context to use
