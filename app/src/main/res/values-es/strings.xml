@@ -78,8 +78,4 @@
 
     <string name="carbon_estimates">"gramos (g):% 1f libras (lb):% 2f kilogramos (kg):% 3f toneladas métricas (tm):% 4f "</string>
     <string name="msg_pexel_help">Escriba cualquier término en el campo de búsqueda y presione el botón de búsqueda, luego haga clic en la imagen para ver la página de detalles</string>
-<<<<<<< HEAD
-
-=======
->>>>>>> 27e65b64feab6a45ecc4724a5ddf7ee90508f54c
 </resources>
