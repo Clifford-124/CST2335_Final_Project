@@ -44,6 +44,8 @@
     <string name="project_owlbot_dictionary">Diccionario Owlbot</string>
     <string name="project_covid_19_information_tracker">Rastreador de información Covid 19</string>
     <string name="project_carbondixide">Interfaz de dióxido de carbono</string>
+    <string name="author_group">Seema, Cliff, Renu, Faisal</string>
+    <string name="activity_group">Final project</string>
 
     <string name="version">v1.0</string>
     <string name="author_name">Seema Thapa Gurung</string>
@@ -56,7 +58,7 @@
     <string name="carbon_dioxide_author_name">Clifford Leonard Dsa</string>
     <string name="carbon_dioxide_activity_main">"Interfaz de dióxido de carbono "</string>
     <string name="carbon_dioxide_activity_detail">Detalles</string>
-    <string name="carbon_estimates">"gramos (g): %1f libras (lb): %2f kilogramos (kg): %3f toneladas métricas (tm): %4f "</string>
+
 
     <string name="enter_distance">"Ingrese la distancia de viaje "</string>
     <string name="estimate_delete_error">Error al eliminar la estimación</string>
@@ -72,5 +74,9 @@
     <string name="msg_confirm_delete_estimate">¿Estás segura de que deseas eliminar esta estimación?</string>
     <string name="select_company">"Ingrese la compañía del vehículo "</string>
     <string name="estimate_saved">"Estimación guardada con éxito "</string>
+
+
+    <string name="carbon_estimates">"gramos (g):% 1f libras (lb):% 2f kilogramos (kg):% 3f toneladas métricas (tm):% 4f "</string>
+    <string name="msg_pexel_help">Escriba cualquier término en el campo de búsqueda y presione el botón de búsqueda, luego haga clic en la imagen para ver la página de detalles</string>
 
 </resources>

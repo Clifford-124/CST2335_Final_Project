@@ -21,15 +21,17 @@ import java.util.List;
  */
 public class DatabaseHelper extends SQLiteOpenHelper {
 
-	public static final String DATABASE_NAME = "Appdb";
-	public static final int DATABASE_VERSION = 3;
+
+	public static final String DATABASE_NAME = "PexelsAppdb";
+	public static final int DATABASE_VERSION = 1;
 	public static String TABLE_PEXELS_PHOTO= "pexels_photo";
 	public static String TABLE_CARBON_DIOXIDE= "carbon_dioxide";
 
-	private static final String PHOTO_ROW_ID = "photo_row_id";
-	private static final String PHOTO_ID = "photo_id";
-	private static final String PHOTO_TINY_URL= "photo_tiny_url";
-	private static final String PHOTO_LARGE_URL= "photo_large_url";
+
+	private static final String PHOTO_ROW_ID = "photo_row_id"; //primary key of the table
+	private static final String PHOTO_ID = "photo_id"; //column name
+	private static final String PHOTO_TINY_URL= "photo_tiny_url"; //column name
+	private static final String PHOTO_LARGE_URL= "photo_large_url"; //column name
 
 	private static final String CARBON_D_ID = "id";
 	private static final String CARBON_D_MODEL_NAME = "name";
@@ -79,7 +81,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		cv.put(PHOTO_ID,photo.getId());
 		cv.put(PHOTO_TINY_URL,photo.getTinyUrl());
 		cv.put(PHOTO_LARGE_URL,photo.getLarge2xUrl());
-		long i = db.insert(TABLE_PEXELS_PHOTO, null, cv);
+		long i = db.insert(TABLE_PEXELS_PHOTO, null, cv); //insert the new photo and return the id created
 		db.close();
 		return i;
 	}
@@ -118,7 +120,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	 */
 	private void createPexelsPhotoTable(SQLiteDatabase db ){
 		if(!db.isOpen()){
-			db=getWritableDatabase();
+			db=getWritableDatabase(); //returns a SQLiteDtabase object that lets you insert, update and delete.
 		}
 		db.execSQL("CREATE TABLE '"
 				+ TABLE_PEXELS_PHOTO
@@ -137,7 +139,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	 */
 	public PhotoModel getPhotoByID(int id)
 	{
-		SQLiteDatabase db = getReadableDatabase();
+		SQLiteDatabase db = getReadableDatabase();//returns a database that is read-only
 		String query = "SELECT *"
 				+ " FROM " + TABLE_PEXELS_PHOTO + ""
 				+ " WHERE " + PHOTO_ID + " = '" + id + "' ;";
@@ -153,9 +155,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 			if (cursor.moveToFirst()) {
 
 				do {
-					int photo_id = cursor.getInt(cursor.getColumnIndex(PHOTO_ID));
-					String tiny_url = cursor.getString(cursor.getColumnIndex(PHOTO_TINY_URL));
-					String large_url = cursor.getString(cursor.getColumnIndex(PHOTO_LARGE_URL));
+					int photo_id = cursor.getInt(cursor.getColumnIndex(PHOTO_ID));//0
+					String tiny_url = cursor.getString(cursor.getColumnIndex(PHOTO_TINY_URL));//1
+					String large_url = cursor.getString(cursor.getColumnIndex(PHOTO_LARGE_URL));//2
 
 					photo = new PhotoModel();
 					photo.setId(photo_id);
