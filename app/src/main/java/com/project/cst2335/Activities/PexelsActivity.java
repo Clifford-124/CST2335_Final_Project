@@ -1,7 +1,11 @@
 package com.project.cst2335.Activities;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -12,6 +16,8 @@ import com.project.cst2335.Fragments.PhotoDetailFragment;
 import com.project.cst2335.Fragments.PhotoListFragment;
 import com.project.cst2335.Models.PhotoModel;
 import com.project.cst2335.R;
+import com.project.cst2335.Utils.Utilities;
+
 /**
  *
  * Pexels activity responsible to displaying  list and detail fragments
@@ -31,7 +37,7 @@ public class PexelsActivity extends AppCompatActivity {
         String activity = getResources().getString(R.string.activity_name);
         String author = getResources().getString(R.string.author_name);
         String version = getResources().getString(R.string.version);
-        myToolbar.setTitle(activity + " - " + " - " + author + " - " + version);
+        myToolbar.setTitle(activity + " - " + author + " - " + version);
         setSupportActionBar(myToolbar);
         isTablet = findViewById(R.id.framePhotoDetails) != null;// this is null if on phone, true for tablet, false for phone
 
@@ -58,6 +64,22 @@ public class PexelsActivity extends AppCompatActivity {
         } else {
             getSupportFragmentManager().beginTransaction().replace(R.id.framePhotosList, md).addToBackStack("PhotoListFragment").commit();
         }
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.pexels_menu,menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.help:
+                // showing help alert dialog
+                Utilities.showAlertDialog(getResources().getString(R.string.msg_title_help),getResources().getString(R.string.msg_pexel_help), PexelsActivity.this);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
 
