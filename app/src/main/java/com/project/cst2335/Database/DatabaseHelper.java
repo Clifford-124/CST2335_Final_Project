@@ -28,10 +28,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	public static String TABLE_CARBON_DIOXIDE= "carbon_dioxide";
 
 
+
 	private static final String PHOTO_ROW_ID = "photo_row_id"; //primary key of the table
 	private static final String PHOTO_ID = "photo_id"; //column name
 	private static final String PHOTO_TINY_URL= "photo_tiny_url"; //column name
 	private static final String PHOTO_LARGE_URL= "photo_large_url"; //column name
+
 
 	private static final String CARBON_D_ID = "id";
 	private static final String CARBON_D_MODEL_NAME = "name";
@@ -41,6 +43,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	private static final String CARBON_D_EST_LB = "carbon_lb";
 	private static final String CARBON_D_EST_KG = "carbon_kg";
 	private static final String CARBON_D_EST_MT = "carbon_mt";
+
 
 	Context ctx;
 
