@@ -18,4 +18,12 @@
         android:orderInCategory="100"
         android:title="@string/project_carbondixide"
         app:showAsAction="always" />
+
+    <item
+        android:id="@+id/OwlMenu"
+        android:icon="@drawable/ic_menu_gallery"
+        android:orderInCategory="100"
+        android:title="@string/project_carbondixide"
+        app:showAsAction="always" />
+
 </menu>

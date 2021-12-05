@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import com.project.cst2335.Models.CarModel;
 import com.project.cst2335.Models.Estimates;
+import com.project.cst2335.Models.OwlWord;
 import com.project.cst2335.Models.PhotoModel;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,10 +23,11 @@ import java.util.List;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
 
-	public static final String DATABASE_NAME = "PexelsAppdb";
-	public static final int DATABASE_VERSION = 1;
+	public static final String DATABASE_NAME = "Appdb";
+	public static final int DATABASE_VERSION = 5;
 	public static String TABLE_PEXELS_PHOTO= "pexels_photo";
 	public static String TABLE_CARBON_DIOXIDE= "carbon_dioxide";
+	public static String TABLE_OWL_DICTIONARY= "owl_dictionary";
 
 
 
@@ -45,6 +47,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	private static final String CARBON_D_EST_MT = "carbon_mt";
 
 
+	private static final String OWL_ID = "id";
+	private static final String OWL_WORD = "word";
+	private static final String OWL_TYPE = "type";
+	private static final String OWL_DEFINITION = "description";
+	private static final String OWL_EXAMPLE = "example";
+	private static final String OWL_IMAGE_URL = "image_url";
+	private static final String OWL_WORD_PRONUNCIATION = "pronunciation";
+
 	Context ctx;
 
 	/**
@@ -61,12 +71,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	public void onCreate(SQLiteDatabase db) {
 		createPexelsPhotoTable(db);
 		createCarbonDioxideTable(db);
+		createOwlDictionaryTable(db);
 	}
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 		dropPexelsPhotoTable(db);
 		dropCarbonDioxideTable(db);
+		dropOwlDictionaryTable(db);
+
 		onCreate(db);
 	}
 
@@ -375,4 +388,117 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		return res;
 	}
 
+
+	/**
+	 *
+	 * create table
+	 *
+	 * @param db database to use
+	 */
+	private void createOwlDictionaryTable(SQLiteDatabase db ){
+		if(!db.isOpen()){
+			db=getWritableDatabase();
+		}
+		db.execSQL("CREATE TABLE '"
+				+ TABLE_OWL_DICTIONARY
+				+ "' ("+OWL_ID+" INTEGER PRIMARY KEY AUTOINCREMENT," +
+				""+OWL_TYPE+" TEXT," +
+				""+OWL_WORD+" TEXT," +
+				""+OWL_DEFINITION+" TEXT," +
+				""+OWL_EXAMPLE+" TEXT," +
+				""+OWL_IMAGE_URL+" TEXT," +
+				""+OWL_WORD_PRONUNCIATION+" TEXT )");
+	}
+
+	/**
+	 *
+	 * drop OwlDictionary table
+	 *
+	 * @param db database to use for deletion
+	 */
+	private void dropOwlDictionaryTable(SQLiteDatabase db ){
+		if(!db.isOpen()){
+			db=getWritableDatabase();
+		}
+		db.execSQL("DROP TABLE  IF EXISTS '" + TABLE_OWL_DICTIONARY + "'");
+	}
+
+	/**
+	 * get all models from table
+	 *
+	 * @return ArrayList of carModels
+	 */
+	public ArrayList<OwlWord> getWords()
+	{
+		SQLiteDatabase db = getReadableDatabase();
+		String query = "SELECT *"
+				+" FROM "+TABLE_OWL_DICTIONARY+""
+				+" ;";
+		Cursor cursor = db.rawQuery(query,null);
+		ArrayList<OwlWord> models = new ArrayList<OwlWord>();
+		System.out.println("Cusrosr"+cursor.getCount());
+		if (cursor==null || cursor.getCount()==0)
+		{
+			cursor.close();
+			db.close();
+			return models;
+		}
+		if (cursor.getCount() > 0) {
+			if (cursor.moveToFirst()) {
+				do {
+					int id = cursor.getInt(cursor.getColumnIndex(OWL_ID));
+					String word = cursor.getString(cursor.getColumnIndex(OWL_WORD));
+					String type = cursor.getString(cursor.getColumnIndex(OWL_TYPE));
+					String definition = cursor.getString(cursor.getColumnIndex(OWL_DEFINITION));
+					String example = cursor.getString(cursor.getColumnIndex(OWL_EXAMPLE));
+					String image_url = cursor.getString(cursor.getColumnIndex(OWL_IMAGE_URL));
+					String pronunciation = cursor.getString(cursor.getColumnIndex(OWL_WORD_PRONUNCIATION));
+					OwlWord model= new OwlWord(id,type,definition,example,image_url,word,pronunciation);
+					models.add(model);
+				} while (cursor.moveToNext());
+			}
+		}
+		db.close();
+		cursor.close();
+		return models;
+	}
+
+
+	/**
+	 *
+	 * This function will save estimates in db
+	 * @param estimate
+	 * @return
+	 */
+	public long saveWordDefinitions(OwlWord word) {
+
+		SQLiteDatabase db = getWritableDatabase();
+
+		ContentValues cv = new ContentValues();
+
+		cv.put(OWL_WORD,word.getWord());
+		cv.put(OWL_TYPE,word.getType());
+		cv.put(OWL_DEFINITION,word.getDefinition());
+		cv.put(OWL_EXAMPLE,word.getExample());
+		cv.put(OWL_IMAGE_URL,word.getImageURL());
+		cv.put(OWL_WORD_PRONUNCIATION,word.getPronunciation());
+
+		long i = db.insert(TABLE_OWL_DICTIONARY, null, cv);
+		db.close();
+		return i;
+	}
+
+
+	/**
+	 * delete estimate by id
+	 *
+	 * @param id id of model stored in db to delete
+	 * @return if successfully deleted
+	 */
+	public boolean deleteWordByID(int id) {
+		SQLiteDatabase db = getWritableDatabase();
+		boolean res=db.delete(TABLE_OWL_DICTIONARY, OWL_ID+"="+id, null)>0;
+		db.close();
+		return res;
+	}
 }

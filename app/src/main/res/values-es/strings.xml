@@ -78,4 +78,30 @@
 
     <string name="carbon_estimates">"gramos (g):% 1f libras (lb):% 2f kilogramos (kg):% 3f toneladas métricas (tm):% 4f "</string>
     <string name="msg_pexel_help">Escriba cualquier término en el campo de búsqueda y presione el botón de búsqueda, luego haga clic en la imagen para ver la página de detalles</string>
+
+
+    <string name="owl_bot_activity_main">Buscar palabra</string>
+    <string name="owl_bot_author_name">Reema</string>
+    <string name="owl_bot_version">v1.0</string>
+    <string name="owl_enter_word">"Escriba cualquier palabra para buscar "</string>
+    <string name="owl_search_word">"Escriba cualquier palabra "</string>
+    <string name="owl_search_botton">"Valor de búsqueda "</string>
+    <string name="owl_open_definitions">"Definiciones abiertas "</string>
+    <string name="owl_word">"Palabra: %1s "</string>
+    <string name="owl_type">Escribe: %1s</string>
+    <string name="owl_definitions">Definición %1s</string>
+    <string name="owl_example">Ejemplo %1s</string>
+    <string name="pronunciation">Pronunciación %1s</string>
+    <string name="owl_word_delete_success">"Palabra eliminada correctamente "</string>
+    <string name="owl_word_deleting">"Eliminando palabra "</string>
+    <string name="owl_word_saving">Guardando palabra</string>
+    <string name="owl_word_saved">"Palabra guardada correctamente "</string>
+    <string name="owl_word_delete_confirmation">"¿Estás seguro de que quieres eliminar esta palabra? "</string>
+    <string name="owl_word_delete_error">"Error al eliminar la palabra "</string>
+    <string name="owl_interface">"Diccionario de palabras Owl Bot "</string>
+    <string name="owl_interface_menu">"Esta interfaz enumerará todas las definiciones de la palabra gievn, el usuario puede seleccionar cualquier definición de la lista para ver las definiciones completas con un ejemplo en la siguiente pantalla "</string>
+    <string name="owl_definitions_found">"Total de% 1d definiciones encontradas "</string>
+    <string name="owl_download_definition">"Cargando definiciones para% 1s "</string>
+    <string name="owl_loading_definitions">Cargando desde la base de datos</string>
+
 </resources>

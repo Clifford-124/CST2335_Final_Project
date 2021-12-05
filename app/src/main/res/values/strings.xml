@@ -43,7 +43,6 @@
     <string name="estimate_delete_error">Error deleting estimate</string>
 
 
-
     <string name="pexels_search_item">Type here to search pictures</string>
     <string name="search_pexels_pictures">Search Pictures</string>
 
@@ -81,4 +80,29 @@
     <string name="task_completed">Task Completed Successfully</string>
     <string name="open_saved_photos">Open Saved Photos</string>
     <string name="estimate_saved">Estimate Saved Successfully</string>
+
+
+    <string name="owl_bot_activity_main">Serach Word</string>
+    <string name="owl_bot_author_name">Reema</string>
+    <string name="owl_bot_version">v1.0</string>
+    <string name="owl_enter_word">Type any word to search</string>
+    <string name="owl_search_word">Type any word</string>
+    <string name="owl_search_botton">Search Value</string>
+    <string name="owl_open_definitions">Open Definitions</string>
+    <string name="owl_word">"Word: %1s"</string>
+    <string name="owl_type">"Type: %1s"</string>
+    <string name="owl_definitions">"Definition: %1s"</string>
+    <string name="owl_example">"Example: %1s"</string>
+    <string name="pronunciation">"Pronunciation: %1s"</string>
+    <string name="owl_word_delete_success">Word deleted successfully</string>
+    <string name="owl_word_deleting">Deleting word</string>
+    <string name="owl_word_saving">Saving Word</string>
+    <string name="owl_word_saved">Word saved successfully</string>
+    <string name="owl_word_delete_confirmation">Are you sure you want to delete this word</string>
+    <string name="owl_word_delete_error">Error deleting word</string>
+    <string name="owl_interface">Owl Bot Word Dictionary</string>
+    <string name="owl_interface_menu">This inteface will list all definitions for gievn word, user can select any definitions from list to see full definitions with example in next screen</string>
+    <string name="owl_definitions_found">Total %1d definitions found</string>
+    <string name="owl_download_definition">Loading definitions for %1s</string>
+    <string name="owl_loading_definitions">Loading from database</string>
 </resources>

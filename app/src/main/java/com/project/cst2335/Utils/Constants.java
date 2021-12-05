@@ -47,4 +47,9 @@ public class Constants {
 	public static final String ARG_DISPLAY    ="display";
 	public static final String ARG_DISTANCE   ="distance";
 	public static final String ARG_DISTANCE_UNIT   ="distance_unit";
+
+	public static final String OWL_URL_GET_WORDS=  "https://owlbot.info/api/v4/dictionary/";
+	public static final String OWL_HEADER=  "Authorization";
+	public static final String OWL_API_KEY= "Token 3d4b3b4eeb834bb796853904f30d2e1baaeb9cf3";
+
 }

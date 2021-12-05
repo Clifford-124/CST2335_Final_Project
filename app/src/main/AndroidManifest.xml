@@ -13,7 +13,13 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.CST2335_Final_Project">
+        android:theme="@style/Theme.CST2335_Final_Project.NoActionBar">
+        <activity
+            android:name=".Activities.OwlDetailActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Activities.OwlActivity"
+            android:exported="true" />
         <activity
             android:name=".Activities.CarModelDetailActivity"
             android:exported="true" />
@@ -23,13 +29,13 @@
             android:label="Carbon Interface">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".Activities.MainActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".Activities.PexelsActivity"
             android:exported="true"

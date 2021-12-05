@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:id="@+id/rootLayout"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".Activities.OwlActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/pexel_primary"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/toolbar_main"/>
+
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:layout_width="match_parent"
+        android:id="@+id/drawer_layout"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/owlBotSearch"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="20dp"
+                android:hint="@string/owl_search_word"
+                android:autofillHints="20"
+                android:maxLines="1"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:background="@color/white"
+                android:textColor="@color/black"/>
+
+            <LinearLayout
+                android:id="@+id/owlBotSearchButtons"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical"
+                android:gravity="center_horizontal">
+
+                <Button
+                    android:id="@+id/searchWord"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:padding="10dp"
+                    android:text="@string/owl_search_botton"
+                    android:textColor="@color/carbon_text_color"
+                    android:background="@color/carbon_botton_color" />
+
+
+                <Button
+                    android:id="@+id/openSavedDefinitions"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:padding="10dp"
+                    android:background="@color/carbon_botton_color"
+                    android:text="@string/owl_open_definitions"
+                    android:textColor="@color/carbon_text_color" />
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/modelList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:paddingLeft="20dp"
+                android:paddingTop="20dp"
+                android:paddingRight="20dp" />
+        </LinearLayout>
+        <com.google.android.material.navigation.NavigationView
+            android:layout_width="wrap_content"
+            android:fitsSystemWindows="true"
+            android:layout_gravity="start"
+            app:menu="@menu/nav_menu"
+            app:headerLayout="@layout/popout_header"
+            android:layout_height="match_parent"
+            android:id="@+id/popout_menu_2"/>
+
+    </androidx.drawerlayout.widget.DrawerLayout>
+
+</LinearLayout>
