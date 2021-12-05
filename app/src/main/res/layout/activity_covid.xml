@@ -46,4 +46,55 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
+    <TextView
+        android:id="@+id/totCases"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="Total Cases Go here"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/totFatal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total Fatalities go here"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/totCases" />
+
+    <TextView
+        android:id="@+id/totHosp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total hospitalizations go here"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/totFatal" />
+
+    <TextView
+        android:id="@+id/totRecov"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total recoveries go here"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/totHosp" />
+
+    <TextView
+        android:id="@+id/totVacc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total vaccinations go here"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/totRecov" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
