@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="400dp"
-    android:background="@color/carbon_background_color"
+    android:background="@color/white"
     android:layout_height="match_parent"
     tools:context=".Activities.CarModelDetailActivity">
 

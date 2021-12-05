@@ -64,6 +64,10 @@ public class CarModelDetailActivity extends AppCompatActivity {
 
         setSupportActionBar(myToolbar);
 
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
         //Fetch Data
         String model_id = getIntent().getStringExtra(Constants.ARG_MODEL_ID);
         String model_name = getIntent().getStringExtra(Constants.ARG_MODEL_NAME);

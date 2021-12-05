@@ -1,11 +1,14 @@
 package com.project.cst2335.Activities;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -23,10 +26,12 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
+import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.project.cst2335.Adapters.CarModelAdapter;
 import com.project.cst2335.Database.DatabaseHelper;
@@ -69,7 +74,7 @@ public class CarbonActivity extends AppCompatActivity  implements CarModelAdapte
     EditText distance;
     Button search, open_saved_models;
     RecyclerView modelList;
-    ConstraintLayout rootLayout;
+    LinearLayout rootLayout;
     RadioButton btn_km, btn_mi;
 
     //Adapter for Recycler
@@ -84,6 +89,11 @@ public class CarbonActivity extends AppCompatActivity  implements CarModelAdapte
 
     //Database functions
     private DatabaseHelper db;
+
+    //Views
+    DrawerLayout drawer;
+    ActionBarDrawerToggle toggle;
+    NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,13 +112,35 @@ public class CarbonActivity extends AppCompatActivity  implements CarModelAdapte
 
         setSupportActionBar(myToolbar);
 
+
+        drawer = findViewById(R.id.drawer_layout);
+        toggle = new ActionBarDrawerToggle(this,drawer,myToolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close); //create Hamburger button
+        drawer.addDrawerListener(toggle); //make the button popout
+        toggle.syncState();
+
+        navigationView = findViewById(R.id.popout_menu);
+
+        navigationView.setCheckedItem(R.id.navpexelsProject);
+
+        //when user clicks on the popout menu
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Utilities.startActivity(CarbonActivity.this,item.getItemId());
+                drawer.closeDrawer(GravityCompat.START);//close the drawer
+                finish();
+                return true;
+            }
+        });
+
+
         //Initializing all views
         vehicleCompany = (AutoCompleteTextView) findViewById(R.id.vehicleCompanies);
         distance = (EditText) findViewById(R.id.travelDistance);
-        search = (AppCompatButton) findViewById(R.id.searchModels);
-        open_saved_models = (AppCompatButton) findViewById(R.id.openSavedModels);
+        search = (Button) findViewById(R.id.searchModels);
+        open_saved_models = (Button) findViewById(R.id.openSavedModels);
         modelList = (RecyclerView) findViewById(R.id.modelList);
-        rootLayout = (ConstraintLayout) findViewById(R.id.rootLayout);
+        rootLayout = (LinearLayout) findViewById(R.id.rootLayout);
         btn_km = (RadioButton) findViewById(R.id.unit_km);
         btn_mi = (RadioButton) findViewById(R.id.unit_mi);
         btn_km.setChecked(true);
@@ -126,7 +158,9 @@ public class CarbonActivity extends AppCompatActivity  implements CarModelAdapte
         vehicleCompany.setThreshold(1);
         //Set Adapter in AutoComplete TextView
         vehicleCompany.setAdapter(adapter);
-        vehicleCompany.setTextColor(Color.WHITE);
+        vehicleCompany.setTextColor(Color.BLACK);
+
+
 
         //Load Data from sharedPreferences if any
         retrieveData();
@@ -275,6 +309,7 @@ public class CarbonActivity extends AppCompatActivity  implements CarModelAdapte
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
+
             case R.id.help:
                 // showing help alert dialog
                 showHelpDialog();

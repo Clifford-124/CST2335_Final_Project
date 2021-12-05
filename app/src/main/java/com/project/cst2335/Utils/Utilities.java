@@ -7,6 +7,7 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.ContextWrapper;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -18,6 +19,8 @@ import android.view.inputmethod.InputMethodManager;
 import androidx.appcompat.app.AlertDialog;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.project.cst2335.Activities.CarbonActivity;
+import com.project.cst2335.Activities.PexelsActivity;
 import com.project.cst2335.Models.PhotoModel;
 import com.project.cst2335.R;
 
@@ -251,4 +254,20 @@ public class Utilities {
         builder.create().show();
     }
 
+    public static void startActivity(Context context,int id)
+    {
+        switch(id) {
+            case R.id.carbonInterface:
+            case R.id.carbonInterfaceMenu:
+                Intent newIntent = new Intent(context, CarbonActivity.class);
+                context.startActivity(newIntent);
+                break;
+            case R.id.pexelsProject:
+            case R.id.navpexelsProject:
+                Intent newIntent2 = new Intent(context, PexelsActivity.class);
+                context.startActivity(newIntent2);
+                break;
+
+        }
+    }
 }

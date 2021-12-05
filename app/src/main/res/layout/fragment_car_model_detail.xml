@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/carbon_background_color"
+    android:background="@color/white"
     tools:context=".Fragments.CarModelDetailFragment">
 
     <TextView
@@ -14,8 +14,7 @@
         android:padding="10dp"
         android:gravity="center"
         android:layout_margin="30dp"
-        android:textColor="@color/carbon_text_color"
-        android:background="@color/carbon_item_background_color" />
+        android:textColor="@color/black" />
 
     <LinearLayout
         android:layout_width="match_parent"
