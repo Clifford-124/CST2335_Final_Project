@@ -20,6 +20,7 @@ import androidx.appcompat.app.AlertDialog;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.project.cst2335.Activities.CarbonActivity;
+import com.project.cst2335.Activities.OwlActivity;
 import com.project.cst2335.Activities.PexelsActivity;
 import com.project.cst2335.Models.PhotoModel;
 import com.project.cst2335.R;
@@ -267,7 +268,11 @@ public class Utilities {
                 Intent newIntent2 = new Intent(context, PexelsActivity.class);
                 context.startActivity(newIntent2);
                 break;
-
+            case R.id.OwlMenu:
+            case R.id.dictionaryProject:
+                Intent newIntent3 = new Intent(context, OwlActivity.class);
+                context.startActivity(newIntent3);
+                break;
         }
     }
 }
