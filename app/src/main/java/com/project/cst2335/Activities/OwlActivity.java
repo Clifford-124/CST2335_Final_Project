@@ -355,11 +355,12 @@ public class OwlActivity extends AppCompatActivity  implements OwlModelAdapter.I
         newThread.execute(() -> {
             try {
 
-                URL url = new URL(Constants.OWL_URL_GET_WORDS + "/" + wordSearchValue);
+                URL url = new URL(Constants.OWL_URL_GET_WORDS + wordSearchValue);
                 HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
                 urlConnection.setRequestProperty("Authorization", Constants.OWL_API_KEY);
                 urlConnection.setRequestMethod("GET");
                 int statusCode = urlConnection.getResponseCode();
+                Log.e("testing","test"+statusCode+"  "+wordSearchValue);
                 if (statusCode == 200) {
                     InputStream it = new BufferedInputStream(urlConnection.getInputStream());
                     InputStreamReader read = new InputStreamReader(it);
@@ -370,7 +371,7 @@ public class OwlActivity extends AppCompatActivity  implements OwlModelAdapter.I
                         dta.append(chunks);
                     }
 
-                    Log.e("Yash","test"+dta.toString());
+                    Log.e("testing","test"+dta.toString());
                     JSONObject mainObject = new JSONObject(dta.toString());
                     JSONArray definitions = mainObject.getJSONArray("definitions");
                     String pronunciation = mainObject.getString("pronunciation");

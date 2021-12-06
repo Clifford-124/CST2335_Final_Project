@@ -33,6 +33,7 @@
                 android:hint="@string/owl_search_word"
                 android:autofillHints="20"
                 android:maxLines="1"
+                android:singleLine="true"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
                 android:background="@color/white"
