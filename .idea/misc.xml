@@ -3,6 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Faisal/AndroidStudioProjects/CST2335_Final_Project/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.31875" />
+        <entry key="..\:/Users/Faisal/AndroidStudioProjects/CST2335_Final_Project/app/src/main/res/drawable/ic_launcher_background.xml" value="0.31875" />
+        <entry key="..\:/Users/Faisal/AndroidStudioProjects/CST2335_Final_Project/app/src/main/res/drawable/ic_menu_camera.xml" value="0.31875" />
+        <entry key="..\:/Users/Faisal/AndroidStudioProjects/CST2335_Final_Project/app/src/main/res/drawable/ic_menu_gallery.xml" value="0.31875" />
+        <entry key="..\:/Users/Faisal/AndroidStudioProjects/CST2335_Final_Project/app/src/main/res/drawable/ic_menu_slideshow.xml" value="0.31875" />
+        <entry key="..\:/Users/Faisal/AndroidStudioProjects/CST2335_Final_Project/app/src/main/res/drawable/side_nav_bar.xml" value="0.31875" />
+        <entry key="..\:/Users/Faisal/AndroidStudioProjects/CST2335_Final_Project/app/src/main/res/layout/activity_main.xml" value="0.2821557971014493" />
+        <entry key="..\:/Users/Faisal/AndroidStudioProjects/CST2335_Final_Project/app/src/main/res/layout/covid_main.xml" value="0.2821557971014493" />
+        <entry key="..\:/Users/Faisal/AndroidStudioProjects/CST2335_Final_Project/app/src/main/res/layout/covid_view.xml" value="0.17831813576494426" />
+        <entry key="..\:/Users/Faisal/AndroidStudioProjects/CST2335_Final_Project/app/src/main/res/layout/layout_model.xml" value="0.2821557971014493" />
+        <entry key="..\:/Users/Faisal/AndroidStudioProjects/CST2335_Final_Project/app/src/main/res/menu/covid_activity_actions.xml" value="0.18518518518518517" />
         <entry key="..\:/Users/gurung/OneDrive/Desktop/abhinav/seema-android/pexel-project/CST2335_Final_Project/app/src/main/res/layout/activity_pexels.xml" value="0.3625" />
         <entry key="..\:/Users/gurung/OneDrive/Desktop/abhinav/seema-android/pexel-project/CST2335_Final_Project/app/src/main/res/menu/main.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/ranvi/AndroidStudioProjects/CST2335_Final_Project_2/app/src/main/res/layout/activity_owl.xml" value="0.13125" />

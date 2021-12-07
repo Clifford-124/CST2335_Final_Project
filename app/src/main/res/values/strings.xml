@@ -105,4 +105,28 @@
     <string name="owl_definitions_found">Total %1d definitions found</string>
     <string name="owl_download_definition">Loading definitions for %1s</string>
     <string name="owl_loading_definitions">Loading from database</string>
+
+
+    <string name="button_text4">Covid 19 Tracker</string>
+    <string name="increase">Increase Size</string>
+    <string name="decrease">Dcrease Size</string>
+    <string name="Help">Help_Menu</string>
+    <string name="open">Covid_Open</string>
+    <string name="close">Covid_Close</string>
+    <string name="date">Date</string>
+
+    <string name="covid_result1">Total_cases</string>
+    <string name="covid_result2">Total_cases</string>
+    <string name="covid_result3">Total_cases</string>
+    <string name="covid_result4">Total_cases</string>
+    <string name="covid_result5">Total_cases</string>
+    <string name="total_cases"> Total Cases</string>
+    <string name="total_fatalities">Total Fatalities</string>
+    <string name="total_vaccinations">Total Vaccinations</string>
+    <string name="total_hospitalizations">Total Hospitalizations</string>
+    <string name="total_recoveries">Total Recoveries</string>
+    <string name="covid_save">Save</string>
+    <string name="covid_close">Close</string>
+    <string name="covid_delete">Delete</string>
+
 </resources>

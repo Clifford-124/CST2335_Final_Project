@@ -15,6 +15,12 @@
         android:id="@+id/toolbar"
         app:layout_constraintTop_toTopOf="parent"/>
 
+    <Button
+        android:id="@+id/covbtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/project_covid_19_information_tracker" />
+
     <androidx.drawerlayout.widget.DrawerLayout
         android:layout_width="match_parent"
         android:id="@+id/drawer_layout"
