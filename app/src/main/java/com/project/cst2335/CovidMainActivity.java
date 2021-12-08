@@ -10,8 +10,6 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.project.cst2335.R;
-
 public class CovidMainActivity extends AppCompatActivity {
 
     //EditText covid_editText;
@@ -48,7 +46,7 @@ public class CovidMainActivity extends AppCompatActivity {
 
         // FragmentTransaction
         FragmentTransaction tran = fMgr.beginTransaction();   // return transaction object
-        tran.add(R.id.fragmentRoom, covidFragment);
+        tran.add(R.id.fragmentSpace, covidFragment);
 
         // loading the fragment into FrameLayout
         tran.commit();
@@ -63,7 +61,7 @@ public class CovidMainActivity extends AppCompatActivity {
     public void userClickedMessage(Covid_Dates_Fragment.CovidInformation wordMessage, int position) {
         Covid_Details_Fragment mdFragment = new Covid_Details_Fragment(wordMessage, position);
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentRoom, mdFragment).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentSpace, mdFragment).commit();
     }
 
     public void notifyMessageSaved(Covid_Dates_Fragment.CovidInformation selectedDateInformation, int chosenPosition) {

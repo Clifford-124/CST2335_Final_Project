@@ -67,10 +67,10 @@ public  class Covid_Dates_Fragment extends Fragment {
      * @param savedInstanceState
      * @return
      */
-    @Override //similar to onCreate in ChatRoom.java
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View covidLayout = inflater.inflate(R.layout.covid_main, container, false);
-        //find button, editText, and recycleview:
+        //finding button, editText, and recyclerview
         covidSearchContent = covidLayout.findViewById(R.id.covid_editText);
         covidSearchButton = covidLayout.findViewById(R.id.searchBtn);
         opener = new CovidDbOpener(getContext());
@@ -146,7 +146,7 @@ public  class Covid_Dates_Fragment extends Fragment {
 
                         });
                     }
-                    getActivity().runOnUiThread(() -> alertDialog.hide());
+                    //getActivity().runOnUiThread(() -> alertDialog.hide());
 
 
                 } catch (IOException | JSONException ioe) {
@@ -276,15 +276,7 @@ public  class Covid_Dates_Fragment extends Fragment {
          * @param total_recoveries
          * @param total_vaccinations
          */
-        public CovidInformation(long id, String date, int total_cases, int total_fatalities, int total_hospitalizations, int total_vaccinations, int total_recoveries) {
-            this.total_cases = total_cases;
-            this.total_fatalities = total_fatalities;
-            this.total_hospitalizations = total_hospitalizations;
-            this.total_recoveries = total_recoveries;
-            this.total_vaccinations = total_vaccinations;
-            this.id = id;
-            this.date = date;
-        }
+
 
         public CovidInformation( String date, int total_cases, int total_fatalities, int total_hospitalizations, int total_vaccinations, int total_recoveries) {
             this.total_cases = total_cases;
@@ -293,6 +285,16 @@ public  class Covid_Dates_Fragment extends Fragment {
             this.total_recoveries = total_recoveries;
             this.total_vaccinations = total_vaccinations;
 
+            this.date = date;
+        }
+
+        public CovidInformation(long id, String date, int total_cases, int total_fatalities, int total_hospitalizations, int total_vaccinations, int total_recoveries) {
+            this.total_cases = total_cases;
+            this.total_fatalities = total_fatalities;
+            this.total_hospitalizations = total_hospitalizations;
+            this.total_recoveries = total_recoveries;
+            this.total_vaccinations = total_vaccinations;
+            this.id = id;
             this.date = date;
         }
 
@@ -366,9 +368,9 @@ public  class Covid_Dates_Fragment extends Fragment {
         int col_total_recovery = results.getColumnIndex(CovidDbOpener.Col_total_recoveries);
 
 
-        //cursor is pointing to row -1
-        while (results.moveToNext()) //returns false if no more data
-        { //pointing to row 2
+
+        while (results.moveToNext())
+        {
             int id = results.getInt(idIndex);
             String date = results.getString(_idCol_Date);
             int col_cases_saved = results.getInt(col_total_cases_saved);
@@ -378,7 +380,7 @@ public  class Covid_Dates_Fragment extends Fragment {
             int col_recovery_saved = results.getInt(col_total_recovery);
 
 
-            //add to arrayList:
+            //adding data to arrayList
             covidInfoArrayList.add(new CovidInformation(id, date, col_cases_saved, col_fatalities_saved, col_hospitalization_saved,
                     col_vaccination_saved, col_recovery_saved));
 

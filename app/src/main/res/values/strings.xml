@@ -107,19 +107,11 @@
     <string name="owl_loading_definitions">Loading from database</string>
 
 
-    <string name="button_text4">Covid 19 Tracker</string>
-    <string name="increase">Increase Size</string>
-    <string name="decrease">Dcrease Size</string>
-    <string name="Help">Help_Menu</string>
-    <string name="open">Covid_Open</string>
-    <string name="close">Covid_Close</string>
-    <string name="date">Date</string>
 
-    <string name="covid_result1">Total_cases</string>
-    <string name="covid_result2">Total_cases</string>
-    <string name="covid_result3">Total_cases</string>
-    <string name="covid_result4">Total_cases</string>
-    <string name="covid_result5">Total_cases</string>
+
+
+    <string name="date">Date</string>
+    <string name="Help">Help_Menu</string>
     <string name="total_cases"> Total Cases</string>
     <string name="total_fatalities">Total Fatalities</string>
     <string name="total_vaccinations">Total Vaccinations</string>
