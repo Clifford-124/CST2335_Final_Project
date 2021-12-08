@@ -2,19 +2,14 @@
 <resources>
     <string name="app_name">CST2335 فائنل پروجیکٹ</string>
 
-    <string name="button_text4">کوویڈ 19 ٹریکر</string>
-    <string name="increase">سائز میں اضافہ کریں۔</string>
-    <string name="decrease">سائز کم کریں۔</string>
+
+
     <string name="Help">مدد_مینو</string>
     <string name="open">کوویڈ اوپن</string>
     <string name="close">کوویڈ بند</string>
     <string name="date">تاریخ</string>
 
-    <string name="covid_result1">کل_کیسز</string>
-    <string name="covid_result2">کل_کیسز</string>
-    <string name="covid_result3">کل_کیسز</string>
-    <string name="covid_result4">کل_کیسز</string>
-    <string name="covid_result5">کل_کیسز</string>
+
     <string name="total_cases"> کل_کیسز</string>
     <string name="total_fatalities">کل اموات</string>
     <string name="total_vaccinations">کل ویکسینیشن</string>
