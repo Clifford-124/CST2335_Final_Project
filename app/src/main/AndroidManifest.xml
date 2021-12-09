@@ -26,7 +26,7 @@
         <activity
             android:name=".Activities.CarbonActivity"
             android:exported="true"
-            android:label="Carbon Interface">
+            android:label="Carbon Interface"/>
 
         <activity
             android:name=".Activities.MainActivity"
