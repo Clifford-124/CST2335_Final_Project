@@ -8,7 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="pexel_primary">#FF6200EE</color>
-
+    <color name="my_primary">#FFFFFFFF</color>
     <color name="carbon_background_color">#141414</color>
     <color name="carbon_text_color">#ffffff</color>
     <color name="carbon_item_background_color">#1f1f1f</color>

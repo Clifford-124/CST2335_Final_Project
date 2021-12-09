@@ -28,20 +28,28 @@
             android:exported="true"
             android:label="Carbon Interface">
 
-        </activity>
         <activity
             android:name=".Activities.MainActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
         </activity>
-        <activity
+        
+          <activity
             android:name=".Activities.PexelsActivity"
             android:exported="true"
             android:label="@string/activity_name" />
+
+        <activity
+            android:name=".CovidMainActivity"
+            android:exported="true"
+            android:label="Covid Activity" />
+
     </application>
+
+
 
 </manifest>

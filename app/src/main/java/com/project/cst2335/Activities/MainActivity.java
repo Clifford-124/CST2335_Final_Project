@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,6 +17,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
 import com.project.cst2335.Activities.CarbonActivity;
+import com.project.cst2335.CovidMainActivity;
 import com.project.cst2335.R;
 import com.project.cst2335.Utils.Utilities;
 
@@ -39,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         // setting all the controls
         toolbar = findViewById(R.id.toolbar);//find the toolbar
         setSupportActionBar(toolbar); // load the toolbar
-
+        Button covidButton = findViewById(R.id.covbtn);
         drawer = findViewById(R.id.drawer_layout);
         toggle = new ActionBarDrawerToggle(this,drawer,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close); //create Hamburger button
         drawer.addDrawerListener(toggle); //make the button popout
@@ -63,9 +65,20 @@ public class MainActivity extends AppCompatActivity {
                     // drawer.closeDrawers();
                 }
 
+                else if (id == R.id.covidProject){
+                    Intent newIntent = new Intent(MainActivity.this, CovidMainActivity.class);
+                    startActivity(newIntent);
+                    // drawer.closeDrawers();
+                }
+
                 drawer.closeDrawer(GravityCompat.START);//close the drawer
                 return true;
             }
+        });
+
+        covidButton.setOnClickListener(clk->{
+            Intent newIntent = new Intent(MainActivity.this, CovidMainActivity.class);
+            startActivity(newIntent);
         });
 
     }
@@ -105,6 +118,14 @@ public class MainActivity extends AppCompatActivity {
                 Intent carbonIntent = new Intent(MainActivity.this, CarbonActivity.class);
                 startActivity(carbonIntent);
                 break;
+
+            case R.id.covidProject:
+                // starting Carbon activity when project is selected from the toolbar icon
+                Intent covidIntent = new Intent(MainActivity.this, CarbonActivity.class);
+                startActivity(covidIntent);
+                break;
+
+
         }
         return super.onOptionsItemSelected(item);
     }

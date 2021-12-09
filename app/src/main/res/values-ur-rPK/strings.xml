@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CST2335 فائنل پروجیکٹ</string>
+
+
+
+    <string name="Help">مدد_مینو</string>
+    <string name="open">کوویڈ اوپن</string>
+    <string name="close">کوویڈ بند</string>
+    <string name="date">تاریخ</string>
+
+
+    <string name="total_cases"> کل_کیسز</string>
+    <string name="total_fatalities">کل اموات</string>
+    <string name="total_vaccinations">کل ویکسینیشن</string>
+    <string name="total_hospitalizations">کل ہسپتال میں داخل ہونا</string>
+    <string name="total_recoveries">کل ریکوری</string>
+    <string name="covid_save">محفوظ کریں۔</string>
+    <string name="covid_close">بند کریں</string>
+    <string name="covid_delete">حذف کریں۔</string>
+</resources>

@@ -105,4 +105,20 @@
     <string name="owl_definitions_found">Total %1d definitions found</string>
     <string name="owl_download_definition">Loading definitions for %1s</string>
     <string name="owl_loading_definitions">Loading from database</string>
+
+
+
+
+
+    <string name="date">Date</string>
+    <string name="Help">Help_Menu</string>
+    <string name="total_cases"> Total Cases</string>
+    <string name="total_fatalities">Total Fatalities</string>
+    <string name="total_vaccinations">Total Vaccinations</string>
+    <string name="total_hospitalizations">Total Hospitalizations</string>
+    <string name="total_recoveries">Total Recoveries</string>
+    <string name="covid_save">Save</string>
+    <string name="covid_close">Close</string>
+    <string name="covid_delete">Delete</string>
+
 </resources>

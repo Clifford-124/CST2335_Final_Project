@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/total_cases"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/total_cases"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@+id/date"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <TextView
+        android:id="@+id/total_fatalities"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textAlignment="center"
+        android:text="@string/total_fatalities"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@+id/total_cases"
+        tools:layout_editor_absoluteX="8dp" />
+
+    <TextView
+        android:id="@+id/total_hospitalizations"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textAlignment="center"
+        android:text="@string/total_hospitalizations"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@+id/total_fatalities" />
+
+    <TextView
+        android:id="@+id/total_recoveries"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textAlignment="center"
+        android:text="@string/total_recoveries"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@+id/total_hospitalizations" />
+
+    <TextView
+        android:id="@+id/total_vaccinations"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textAlignment="center"
+        android:text="@string/total_vaccinations"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@+id/total_recoveries" />
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/date"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/covidCloseBtn"
+        android:layout_width="409dp"
+        android:layout_height="52dp"
+        android:layout_weight="1"
+        android:text="@string/covid_close"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/covidDeleteBtn" />
+
+    <Button
+        android:id="@+id/covidDeleteBtn"
+        android:layout_width="409dp"
+        android:layout_height="51dp"
+        android:layout_weight="1"
+        android:text="@string/covid_delete"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/covidSaveBtn" />
+
+    <Button
+        android:id="@+id/covidSaveBtn"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_weight="1"
+        android:text="@string/covid_save"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/total_vaccinations" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
