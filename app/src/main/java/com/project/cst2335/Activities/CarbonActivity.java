@@ -19,6 +19,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -161,7 +162,6 @@ public class CarbonActivity extends AppCompatActivity  implements CarModelAdapte
         vehicleCompany.setTextColor(Color.BLACK);
 
 
-
         //Load Data from sharedPreferences if any
         retrieveData();
 
@@ -298,6 +298,7 @@ public class CarbonActivity extends AppCompatActivity  implements CarModelAdapte
         String travelDistance = distance.getText().toString();
         if (validateInputs(travelDistance,company)) {
             if (Utilities.checkConnectivity(CarbonActivity.this)) {
+                Utilities.closeKeyboard(CarbonActivity.this,vehicleCompany);
                 saveData(company, travelDistance);
                 onLoadModels();
             } else {
@@ -308,18 +309,11 @@ public class CarbonActivity extends AppCompatActivity  implements CarModelAdapte
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-
-            case R.id.help:
-                // showing help alert dialog
-                showHelpDialog();
-                break;
-            case R.id.pexelsProject:
-                // starting new activity when project is selected from the roolbar icon
-                Intent newIntent = new Intent(CarbonActivity.this, PexelsActivity.class);
-                startActivity(newIntent);
-                break;
-        }
+        if (item.getItemId() == R.id.help)
+            // showing help alert dialog
+            showHelpDialog();
+        else
+            Utilities.startActivity(CarbonActivity.this, item.getItemId());
         return super.onOptionsItemSelected(item);
     }
 
@@ -335,6 +329,8 @@ public class CarbonActivity extends AppCompatActivity  implements CarModelAdapte
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main_menu, menu);
+        menu.findItem(R.id.carbonInterfaceMenu).setVisible(false);
+
         return true;
     }
 
@@ -378,6 +374,8 @@ public class CarbonActivity extends AppCompatActivity  implements CarModelAdapte
      */
     public void onLoadModels() {
         String vehicleMakeID = vehicleCompanyArray.get(vehicleCompany.getText().toString());
+
+        models.clear();
 
         AlertDialog dialog = new AlertDialog.Builder(CarbonActivity.this)
                 .setTitle(getResources().getString(R.string.downloading))

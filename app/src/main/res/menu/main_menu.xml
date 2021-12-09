@@ -13,6 +13,12 @@
         android:title="@string/project_pexels"
         app:showAsAction="always" />
     <item
+        android:id="@+id/covidProject"
+        android:icon="@drawable/ic_menu_gallery"
+        android:orderInCategory="100"
+        android:title="@string/project_covid_19_information_tracker"
+        app:showAsAction="always" />
+    <item
         android:id="@+id/carbonInterfaceMenu"
         android:icon="@drawable/ic_menu_gallery"
         android:orderInCategory="100"

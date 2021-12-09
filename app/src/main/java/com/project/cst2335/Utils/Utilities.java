@@ -20,8 +20,10 @@ import androidx.appcompat.app.AlertDialog;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.project.cst2335.Activities.CarbonActivity;
+import com.project.cst2335.Activities.MainActivity;
 import com.project.cst2335.Activities.OwlActivity;
 import com.project.cst2335.Activities.PexelsActivity;
+import com.project.cst2335.CovidMainActivity;
 import com.project.cst2335.Models.PhotoModel;
 import com.project.cst2335.R;
 
@@ -258,13 +260,25 @@ public class Utilities {
     public static void startActivity(Context context,int id)
     {
         switch(id) {
+            //check if the id matches with one of the id from menu/main_menu.xml
+            case R.id.help:
+                // showing help alert dialog
+                Utilities.showAlertDialog(context.getResources().getString(R.string.msg_title_help),context.getResources().getString(R.string.msg_main_help), context);
+                break;
             case R.id.carbonInterface:
             case R.id.carbonInterfaceMenu:
+                // starting Carbon activity when project is selected from the toolbar icon
                 Intent newIntent = new Intent(context, CarbonActivity.class);
                 context.startActivity(newIntent);
                 break;
+            case R.id.covidProject:
+            case R.id.navCovidProject:
+                Intent newIntent4 = new Intent(context, CovidMainActivity.class);
+                context.startActivity(newIntent4);
+                break;
             case R.id.pexelsProject:
             case R.id.navpexelsProject:
+                // starting Pexel activity when project is selected from the toolbar icon
                 Intent newIntent2 = new Intent(context, PexelsActivity.class);
                 context.startActivity(newIntent2);
                 break;

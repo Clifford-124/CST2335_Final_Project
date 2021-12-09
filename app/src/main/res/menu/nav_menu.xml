@@ -20,7 +20,7 @@
         android:title="@string/project_owlbot_dictionary"
         app:showAsAction="always" />
     <item
-        android:id="@+id/covidProject"
+        android:id="@+id/navCovidProject"
         android:orderInCategory="100"
         android:icon="@drawable/ic_menu_camera"
         android:title="@string/project_covid_19_information_tracker"

@@ -117,6 +117,7 @@ public  class Covid_Dates_Fragment extends Fragment {
 
                     URL url = new URL(stringURL); //build the server connection
                     HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+
                     InputStream in = new BufferedInputStream(urlConnection.getInputStream());
                     String text = (new BufferedReader(
                             new InputStreamReader(in, StandardCharsets.UTF_8)
@@ -143,10 +144,9 @@ public  class Covid_Dates_Fragment extends Fragment {
 
                         getActivity().runOnUiThread(() -> {
                             covidAdapter.notifyItemInserted(covidInfoArrayList.size() - 1);
-
+                            alertDialog.hide();
                         });
                     }
-                    //getActivity().runOnUiThread(() -> alertDialog.hide());
 
 
                 } catch (IOException | JSONException ioe) {

@@ -41,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
         // setting all the controls
         toolbar = findViewById(R.id.toolbar);//find the toolbar
         setSupportActionBar(toolbar); // load the toolbar
-        Button covidButton = findViewById(R.id.covbtn);
         drawer = findViewById(R.id.drawer_layout);
         toggle = new ActionBarDrawerToggle(this,drawer,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close); //create Hamburger button
         drawer.addDrawerListener(toggle); //make the button popout
@@ -53,32 +52,10 @@ public class MainActivity extends AppCompatActivity {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                int id=item.getItemId();
-                if (id == R.id.navpexelsProject){
-                    // starting new activity when project is selected from the navigation drawer
-                    Intent newIntent = new Intent(MainActivity.this, PexelsActivity.class);
-                    startActivity(newIntent);
-                   // drawer.closeDrawers();
-                } else if (id == R.id.carbonInterface){
-                    Intent newIntent = new Intent(MainActivity.this, CarbonActivity.class);
-                    startActivity(newIntent);
-                    // drawer.closeDrawers();
-                }
-
-                else if (id == R.id.covidProject){
-                    Intent newIntent = new Intent(MainActivity.this, CovidMainActivity.class);
-                    startActivity(newIntent);
-                    // drawer.closeDrawers();
-                }
-
+                Utilities.startActivity(MainActivity.this,item.getItemId());
                 drawer.closeDrawer(GravityCompat.START);//close the drawer
                 return true;
             }
-        });
-
-        covidButton.setOnClickListener(clk->{
-            Intent newIntent = new Intent(MainActivity.this, CovidMainActivity.class);
-            startActivity(newIntent);
         });
 
     }
@@ -102,34 +79,7 @@ public class MainActivity extends AppCompatActivity {
      */
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){ //get the id of the item
-            //check if the id matches with one of the id from menu/main_menu.xml
-            case R.id.help:
-                // showing help alert dialog
-                Utilities.showAlertDialog(getResources().getString(R.string.msg_title_help),getResources().getString(R.string.msg_main_help), MainActivity.this);
-                break;
-            case R.id.pexelsProject:
-                // starting Pexel activity when project is selected from the toolbar icon
-                Intent newIntent = new Intent(MainActivity.this, PexelsActivity.class);
-                startActivity(newIntent);
-                break;
-            case R.id.carbonInterfaceMenu:
-                // starting Carbon activity when project is selected from the toolbar icon
-                Intent carbonIntent = new Intent(MainActivity.this, CarbonActivity.class);
-                startActivity(carbonIntent);
-                break;
-
-            case R.id.covidProject:
-                // starting Carbon activity when project is selected from the toolbar icon
-                Intent covidIntent = new Intent(MainActivity.this, CarbonActivity.class);
-                startActivity(covidIntent);
-                break;
-
-
-        }
+        Utilities.startActivity(MainActivity.this,item.getItemId());
         return super.onOptionsItemSelected(item);
     }
-
-
-
 }

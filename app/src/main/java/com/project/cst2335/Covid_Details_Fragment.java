@@ -103,6 +103,14 @@ public class Covid_Details_Fragment extends Fragment {
             dbase.insert(CovidDbOpener.Table_name, CovidDbOpener.Col_date, newRow);
             parentActivity.notifyMessageSaved(selectedDate, selectedPosition);
         });
+        deleteBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String[] mStrings = {selectedDate.getDate()};
+                dbase.delete(CovidDbOpener.Table_name,"date =?",mStrings);
+                getActivity().finish();
+            }
+        });
         /**
          * click listener for close button;
          * Add setOnClickListener on close button the function will allow button to close the fragment.

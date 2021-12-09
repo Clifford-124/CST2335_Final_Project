@@ -111,22 +111,7 @@ public class OwlActivity extends AppCompatActivity  implements OwlModelAdapter.I
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                int id = item.getItemId();
-                if (id == R.id.navpexelsProject) {
-                    // starting new activity when project is selected from the navigation drawer
-                    Intent newIntent = new Intent(OwlActivity.this, PexelsActivity.class);
-                    startActivity(newIntent);
-                    // drawer.closeDrawers();
-                } else if (id == R.id.carbonInterface) {
-                    Intent newIntent = new Intent(OwlActivity.this, CarbonActivity.class);
-                    startActivity(newIntent);
-                    finish();
-                } else if (id == R.id.dictionaryProject) {
-                    // starting dictonary activity when project is selected from the toolbar icon
-                    Intent OwlIntent = new Intent(OwlActivity.this, OwlActivity.class);
-                    startActivity(OwlIntent);
-                    finish();
-                }
+                Utilities.startActivity(OwlActivity.this,item.getItemId());
                 drawer.closeDrawer(GravityCompat.START);//close the drawer
                 return true;
             }
@@ -188,6 +173,7 @@ public class OwlActivity extends AppCompatActivity  implements OwlModelAdapter.I
 
         if (display.contentEquals("fromAPI")) {
             //set display as fromAPI and pass all details related to model
+            detailIntent.putExtra(Constants.ARG_DISPLAY, "fromAPI");
             detailIntent.putExtra(Constants.ARG_DISPLAY, "fromAPI");
         } else if (display.contentEquals("fromDB")) {
             //If model is From database set display as fromDB and fetch details from db
@@ -268,21 +254,11 @@ public class OwlActivity extends AppCompatActivity  implements OwlModelAdapter.I
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.help:
-                // showing help alert dialog
-                showHelpDialog();
-                break;
-            case R.id.pexelsProject:
-                // starting new activity when project is selected from the roolbar icon
-                Intent newIntent = new Intent(OwlActivity.this, PexelsActivity.class);
-                startActivity(newIntent);
-                break;
-            case R.id.carbonInterfaceMenu:
-                Intent intent2 = new Intent(OwlActivity.this, CarbonActivity.class);
-                startActivity(intent2);
-                break;
-        }
+        if (item.getItemId() == R.id.help)
+            // showing help alert dialog
+            showHelpDialog();
+        else
+            Utilities.startActivity(OwlActivity.this,item.getItemId());
         return super.onOptionsItemSelected(item);
     }
 

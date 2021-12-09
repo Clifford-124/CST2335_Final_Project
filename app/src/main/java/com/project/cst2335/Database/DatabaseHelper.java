@@ -24,7 +24,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
 	public static final String DATABASE_NAME = "Appdb";
-	public static final int DATABASE_VERSION = 5;
+	public static final int DATABASE_VERSION = 6;
 	public static String TABLE_PEXELS_PHOTO= "pexels_photo";
 	public static String TABLE_CARBON_DIOXIDE= "carbon_dioxide";
 	public static String TABLE_OWL_DICTIONARY= "owl_dictionary";
@@ -281,7 +281,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 				+" ;";
 		Cursor cursor = db.rawQuery(query,null);
 		ArrayList<CarModel> models = new ArrayList<CarModel>();
-		System.out.println("Cusrosr"+cursor.getCount());
 		if (cursor==null || cursor.getCount()==0)
 		{
 			cursor.close();
@@ -293,7 +292,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 				do {
 					int model_id = cursor.getInt(cursor.getColumnIndex(CARBON_D_ID));
 					String model_name = cursor.getString(cursor.getColumnIndex(CARBON_D_MODEL_NAME));
-					System.out.println(String.valueOf(model_id)+model_name+"");
 					CarModel model= new CarModel(model_id+"",model_name);
 					models.add(model);
 				} while (cursor.moveToNext());

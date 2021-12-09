@@ -43,10 +43,6 @@ import java.util.concurrent.Executors;
  * @version 1.0
  */
 public class CarModelDetailActivity extends AppCompatActivity {
-
-    //Buttons
-    Button saveButton,deleteButton,closeButton;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
